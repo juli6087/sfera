@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Детальная страница товара — Сфера</title>
+
+    <!-- Подключение шрифтов Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Подключение скрипта и стилей -->
+    
+    <!-- Компоненты -->
+    <script src="../components/header.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Данные каталога для динамической загрузки -->
+    <script src="../js/db.js"></script>
+    <script src="../catalog/catalog.js"></script>
+
+    <script>const PATH_PREFIX = "../";</script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+    <!-- Шапка сайта -->
+    <div id="header-placeholder"></div>
+
+    <!-- Основной контент детальной страницы товара (bitrix:catalog.element) -->
+    <main class="flex-grow max-w-[1600px] mx-auto w-full px-6 py-6">
+
+        <!-- Хлебные крошки -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+            <ol class="flex items-center gap-2 text-[13px] text-gray-500 font-medium flex-wrap" id="breadcrumbs">
+                <li><a href="../index.html" class="hover:text-textMain transition-colors">Главная</a></li>
+                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
+                <li><a href="../catalog/index.html" class="hover:text-textMain transition-colors">Каталог</a></li>
+                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
+                <li id="bc-category"><a href="../catalog/index.html" class="hover:text-textMain transition-colors"
+                        id="bc-category-link">Электроника</a></li>
+                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
+                <li class="text-gray-900 font-semibold truncate max-w-[300px] md:max-w-md" id="bc-title">Товар</li>
+            </ol>
+        </nav>
+
+        <!-- Главный экран товара (WB/Ozon Style) -->
+        <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-12 items-start relative">
+
+            <!-- Левая колонка: Галерея (около 40%) -->
+            <div class="w-full lg:w-[40%] flex flex-col-reverse md:flex-row gap-4 lg:sticky lg:top-24 z-10 items-start">
+                
+                <!-- Миниатюры (горизонтально на мобильных, вертикально на десктопе) -->
+                <div class="flex flex-row md:flex-col gap-3 overflow-x-auto md:overflow-y-auto md:max-h-[800px] scrollbar-hide w-full md:w-16 lg:w-20 shrink-0">
+                    <button
+                        class="w-16 md:w-full aspect-[3/4] rounded-xl bg-white border-2 border-accent p-1.5 flex items-center justify-center shrink-0">
+                        <img id="thumb-1" src="../images/product-speaker.jpg" class="w-full h-full object-contain">
+                    </button>
+                    <button
+                        class="w-16 md:w-full aspect-[3/4] rounded-xl bg-white border border-gray-200 hover:border-gray-400 p-1.5 flex items-center justify-center shrink-0 opacity-70 hover:opacity-100 transition-opacity">
+                        <img id="thumb-2" src="../images/product-speaker.jpg" class="w-full h-full object-contain">
+                    </button>
+                    <button
+                        class="w-16 md:w-full aspect-[3/4] rounded-xl bg-white border border-gray-200 hover:border-gray-400 p-1.5 flex items-center justify-center shrink-0 opacity-70 hover:opacity-100 transition-opacity">
+                        <img id="thumb-3" src="../images/product-speaker.jpg" class="w-full h-full object-contain">
+                    </button>
+                </div>
+
+                <!-- Главное фото -->
+                <div class="w-full bg-white rounded-2xl p-0 border border-gray-100 flex items-center justify-center relative overflow-hidden group aspect-[3/4]">
+                    <div id="product-badge-container" class="absolute top-4 left-4 z-20">
+                        <span id="product-badge" class="bg-red-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm">
+                            Новинка
+                        </span>
+                    </div>
+                    <img id="main-product-img" src="../images/product-speaker.jpg" alt="Товар"
+                        class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </div>
+
+            <!-- Центральная колонка: Инфо (около 35%) -->
+            <div class="w-full lg:w-[35%] flex flex-col">
+
+
+                <div class="flex items-center flex-wrap gap-x-2 gap-y-1 mb-2 text-[13px]">
+                    <span class="text-gray-400 font-medium" id="product-sku">Арт. 7482-019</span>
+                </div>
+                
+                <h1 id="product-title" class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight mb-4">
+                    Умная колонка Яндекс Станция Миди с голосовым помощником Алиса
+                </h1>
+
+                <p id="product-short-desc" class="text-[14px] text-gray-600 mb-6 leading-relaxed">
+                    Компактная умная колонка с голосовым помощником Алисой, мощным звуком 24 Вт и поддержкой протокола
+                    Zigbee для управления умным домом.
+                </p>
+
+                <!-- Модификации товара (Цвет, комплектация и т.д.) -->
+                <div class="mb-8 flex flex-col gap-6" id="product-modifications"></div>
+
+                <div class="mb-6">
+                    <div class="flex flex-col gap-2.5 text-[13px]" id="product-properties-preview">
+                        <div class="flex items-end gap-2">
+                            <span class="text-gray-500">Производитель</span>
+                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                            <span class="text-gray-900 font-medium text-right">Яндекс</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-gray-500">Цвет</span>
+                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                            <span class="text-gray-900 font-medium text-right">Серый</span>
+                        </div>
+                        <div class="flex items-end gap-2">
+                            <span class="text-gray-500">Гарантия</span>
+                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                            <span class="text-gray-900 font-medium text-right">1 год</span>
+                        </div>
+                    </div>
+                    <a href="#details-tab"
+                        class="text-accent text-[13px] font-semibold mt-4 inline-block hover:underline">
+                        Все характеристики
+                    </a>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Buy Box (около 25%) -->
+            <div class="w-full lg:w-[25%] flex flex-col gap-4 lg:sticky lg:top-24 z-10">
+                <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg shadow-gray-200/30">
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5">
+                        <span id="product-price"
+                            class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">12 990 ₽</span>
+                        <span id="product-old-price" class="text-[15px] text-gray-400 line-through mt-1">15 990 ₽</span>
+                        <span id="product-discount"
+                            class="bg-[#FF4D6D] text-white text-[11px] font-bold px-2 py-0.5 rounded mt-1">-19%</span>
+                    </div>
+
+                    <div
+                        class="text-[13px] font-medium text-emerald-700 bg-emerald-50 px-3 py-2.5 rounded-xl inline-flex w-fit items-center gap-2 mb-6">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 relative">
+                            <div class="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-50"></div>
+                        </div>
+                        В наличии
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <button id="btn-order-main"
+                            class="w-full bg-accent hover:bg-accent-hover text-white py-4 px-4 rounded-xl font-bold text-[15px] transition-colors flex items-center justify-center gap-2">
+                            В корзину
+                        </button>
+                        <button id="btn-fast-order"
+                            class="w-full bg-surfaceLight hover:bg-gray-200 text-gray-800 py-4 px-4 rounded-xl font-semibold text-[14px] transition-colors">
+                            Купить в 1 клик
+                        </button>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="text-[13px] text-gray-900 font-medium mb-2.5">Доступно на маркетплейсах:</div>
+                        <div class="flex gap-2">
+                            <a href="#" class="group flex-1 flex justify-center items-center py-2.5 px-2 rounded-xl border border-gray-200 hover:border-[#cb11ab] bg-white hover:bg-[#f8e8f8]/50 transition-all">
+                                <span class="text-gray-600 group-hover:text-[#cb11ab] font-medium text-[12px] transition-colors">Wildberries</span>
+                            </a>
+                            <a href="#" class="group flex-1 flex justify-center items-center py-2.5 px-2 rounded-xl border border-gray-200 hover:border-[#005bff] bg-white hover:bg-[#e8f0fe]/50 transition-all">
+                                <span class="text-gray-600 group-hover:text-[#005bff] font-medium text-[12px] transition-colors">Ozon</span>
+                            </a>
+                            <a href="#" class="group flex-1 flex justify-center items-center py-2.5 px-2 rounded-xl border border-gray-200 hover:border-[#ffcc00] bg-white hover:bg-[#fff8e1]/70 transition-all">
+                                <span class="text-gray-600 group-hover:text-black font-medium text-[12px] transition-colors">Я.Маркет</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-gray-100 text-[12px] text-gray-500 flex flex-col gap-2">
+                        <div class="flex items-start gap-2">
+                            <span class="text-gray-300 font-bold leading-none mt-0.5">•</span>
+                            <span>Безопасная оплата онлайн картой или при получении</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="text-gray-300 font-bold leading-none mt-0.5">•</span>
+                            <span>14 дней на возврат товара надлежащего качества</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Вкладки: Описание, Характеристики, Отзывы (Возвращаем в стиле e-commerce) -->
+        <div class="bg-white rounded-3xl border border-gray-100 p-6 md:p-10 shadow-sm mb-16" id="details-tab">
+            <!-- Заголовки табов -->
+            <div
+                class="border-b border-gray-100 flex gap-6 md:gap-8 mb-8 overflow-x-auto text-[14px] md:text-[15px] font-semibold">
+                <button class="text-accent border-b-2 border-accent pb-4 flex items-center gap-2 whitespace-nowrap">
+                    <span>Описание</span>
+                </button>
+                <button class="text-gray-400 hover:text-gray-800 pb-4 transition-colors whitespace-nowrap">
+                    Характеристики
+                </button>
+                <button class="text-gray-400 hover:text-gray-800 pb-4 transition-colors whitespace-nowrap">
+                    Документация
+                </button>
+            </div>
+
+            <!-- Контент активного таба (Описание) -->
+            <div class="prose max-w-none text-gray-600 text-[15px] leading-relaxed">
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Особенности и преимущества модели</h3>
+                <p id="product-full-desc" class="mb-6">
+                    Модель сочетает в себе передовые технологии умного дома и премиальное качество звучания. Встроенный
+                    процессор обеспечивает мгновенный отклик на голосовые команды, а стильный дизайн гармонично впишется
+                    в любой современный интерьер квартиры или офиса. Товар сертифицирован и имеет официальную гарантию.
+                </p>
+
+            </div>
+        </div>
+
+        <!-- Блок: С этим товаром покупают -->
+        <div class="mb-16">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">С этим товаром покупают</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6" id="bought-together-grid">
+
+                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="../product/index.html?id=1" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="../images/product-speaker.jpg" alt="Умная колонка Яндекс Станция Миди" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">Арт. 7482-019</div>
+                        <div class="mb-2"><div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">12 990 ₽</div></div>
+                        <a href="../product/index.html?id=1" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">Умная колонка Яндекс Станция Миди</a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Умная колонка Яндекс Станция Миди', '12 990 ₽', '7482-019', 'images/product-speaker.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="../product/index.html?id=2" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="../images/product-coffee.jpg" alt="Кофеварка рожковая Polaris PCM 1535E" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">Арт. 3910-845</div>
+                        <div class="mb-2"><div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">8 490 ₽</div></div>
+                        <a href="../product/index.html?id=2" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">Кофеварка рожковая Polaris PCM 1535E</a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Кофеварка рожковая Polaris PCM 1535E', '8 490 ₽', '3910-845', 'images/product-coffee.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="../product/index.html?id=3" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="../images/product-dumbbells.jpg" alt="Гантели разборные стальные 2x15 кг" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">Арт. 5821-304</div>
+                        <div class="mb-2"><div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">6 290 ₽</div></div>
+                        <a href="../product/index.html?id=3" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">Гантели разборные стальные 2x15 кг</a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Гантели разборные стальные 2x15 кг', '6 290 ₽', '5821-304', 'images/product-dumbbells.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="../product/index.html?id=4" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="../images/product-turntable.jpg" alt="Виниловый проигрыватель Topsi" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">Арт. 6319-502</div>
+                        <div class="mb-2"><div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">19 500 ₽</div></div>
+                        <a href="../product/index.html?id=4" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">Виниловый проигрыватель Topsi</a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Виниловый проигрыватель Topsi', '19 500 ₽', '6319-502', 'images/product-turntable.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="../product/index.html?id=5" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="../images/product-vr.jpg" alt="Шлем виртуальной реальности PRO-4" class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">Арт. 9402-118</div>
+                        <div class="mb-2"><div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">38 900 ₽</div></div>
+                        <a href="../product/index.html?id=5" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">Шлем виртуальной реальности PRO-4</a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Шлем виртуальной реальности PRO-4', '38 900 ₽', '9402-118', 'images/product-vr.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Подвал сайта -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Логика детальной страницы товара -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id')) || 1;
+
+            // Находим товар в базе
+            const product = PRODUCTS_DATA.find(p => p.id === productId) || PRODUCTS_DATA[0];
+
+            if (product) {
+            const setImg = (id, src) => { const el = document.getElementById(id); if (el) el.src = src; };
+            const setText = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
+            const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
+
+                document.title = `${product.title} — Сфера`;
+                setText('page-title', `${product.title} — Сфера`);
+                setText('bc-title', product.title);
+                setText('bc-category-link', product.categoryName || 'Каталог');
+                setHref('bc-category-link', PATH_PREFIX + `catalog/index.html?category=${product.category}`);
+
+                setText('product-title', product.title);
+                setText('product-sku', `Арт. ${product.sku}`);
+                setText('product-price', `${product.price.toLocaleString('ru-RU')} ₽`);
+
+                if (product.oldPrice) {
+                    setText('product-old-price', `${product.oldPrice.toLocaleString('ru-RU')} ₽`);
+                    document.getElementById('product-old-price').classList.remove('hidden');
+                } else {
+                    document.getElementById('product-old-price').classList.add('hidden');
+                }
+
+                if (product.discount) {
+                    setText('product-discount', `-${product.discount}%`);
+                    document.getElementById('product-discount').classList.remove('hidden');
+                } else {
+                    document.getElementById('product-discount').classList.add('hidden');
+                }
+
+                if (product.badge) {
+                    const badgeEl = document.getElementById('product-badge');
+                    badgeEl.innerText = product.badge.text;
+                    badgeEl.className = `${product.badge.bgClass} text-white text-[11px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm`;
+                    document.getElementById('product-badge-container').classList.remove('hidden');
+                } else {
+                    document.getElementById('product-badge-container').classList.add('hidden');
+                }
+
+                setText('product-rating', product.rating || '4.9');
+                setText('product-reviews', `(${product.reviewsCount || 128} отзывов)`);
+                setText('product-short-desc', product.description || '');
+                setText('product-full-desc', `${product.description} Универсальный и надежный выбор в категории ${product.categoryName}.`);
+                // Рендер модификаций
+                const modsContainer = document.getElementById('product-modifications');
+                if (modsContainer) {
+                    if (!product.modifications || product.modifications.length === 0) {
+                        modsContainer.classList.add('hidden');
+                    } else {
+                        modsContainer.classList.remove('hidden');
+                        let html = '';
+                        product.modifications.forEach(mod => {
+                            html += '<div>';
+                            html += `<div class="text-[14px] text-gray-900 mb-2.5">${mod.title}: <span class="font-semibold">${mod.selected || ''}</span></div>`;
+                            html += '<div class="flex flex-wrap gap-2.5">';
+                            
+                            if (mod.type === 'color') {
+                                mod.options.forEach(opt => {
+                                    const isSelected = opt.name === mod.selected;
+                                    const borderClass = isSelected ? 'border-2 border-accent p-1' : 'border border-gray-200 hover:border-gray-400 p-1';
+                                    
+                                    html += `<button class="w-[52px] h-[52px] md:w-[60px] md:h-[60px] rounded-xl ${borderClass} overflow-hidden transition-transform hover:scale-105 shrink-0 bg-white relative" title="${opt.name}">`;
+                                    if (opt.image) {
+                                        html += `<img src="${PATH_PREFIX}${opt.image}" class="w-full h-full object-contain rounded-lg">`;
+                                    } else if (opt.bgClass) {
+                                        html += `<div class="w-full h-full ${opt.bgClass} rounded-lg"></div>`;
+                                    }
+                                    html += `</button>`;
+                                });
+                            } else if (mod.type === 'button') {
+                                mod.options.forEach(opt => {
+                                    const isSelected = opt === mod.selected;
+                                    const btnClass = isSelected ? 'border-2 border-accent text-gray-900' : 'border border-gray-200 hover:border-gray-400 text-gray-600 transition-colors';
+                                    html += `<button class="px-4 py-2.5 rounded-xl text-[13px] font-medium bg-white ${btnClass}">${opt}</button>`;
+                                });
+                            }
+                            html += '</div></div>';
+                        });
+                        modsContainer.innerHTML = html;
+                    }
+                }
+
+                // Рендер характеристик
+                const propsContainer = document.getElementById('product-properties-preview');
+                if (propsContainer && product.properties) {
+                    let html = '';
+                    product.properties.forEach(prop => {
+                        html += `
+                        <div class="flex items-end gap-2">
+                            <span class="text-gray-500">${prop.name}</span>
+                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                            <span class="text-gray-900 font-medium text-right">${prop.value}</span>
+                        </div>`;
+                    });
+                    propsContainer.innerHTML = html;
+                }
+
+                const mainImg = document.getElementById('main-product-img');
+                mainImg.src = (PATH_PREFIX + product.image);
+                mainImg.alt = product.title;
+
+                setImg('thumb-1', (PATH_PREFIX + product.image));
+                setImg('thumb-2', (PATH_PREFIX + product.image));
+                setImg('thumb-3', (PATH_PREFIX + product.image));
+
+                // Кнопки заказа
+                const btnOrder = document.getElementById('btn-order-main');
+                btnOrder.onclick = () => openOrderModal(product.title, product.price, product.sku, (PATH_PREFIX + product.image));
+
+                const btnFast = document.getElementById('btn-fast-order');
+                btnFast.onclick = () => openOrderModal(product.title, product.price, product.sku, (PATH_PREFIX + product.image));
+            }
+
+            // Рендер похожих товаров
+            const relatedGrid = document.getElementById('related-products-grid');
+            if (relatedGrid) {
+                const related = PRODUCTS_DATA.filter(p => p.id !== product.id).slice(0, 4);
+                relatedGrid.innerHTML = related.map(p => `
+                    <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                        <a href="${PATH_PREFIX}product/index.html?id=${p.id}" class="relative bg-surfaceLight rounded-2xl h-48 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                            ${p.badge ? `
+                            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                                <span class="${p.badge.bgClass} text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">
+                                    ${p.badge.text}
+                                </span>
+                            </div>` : ''}
+                            <img src="${PATH_PREFIX}${p.image}" alt="${p.title}"
+                                class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                        </a>
+
+                        <div class="flex flex-col flex-grow px-2 pb-2">
+                            <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                                Арт. ${p.sku}
+                            </div>
+                            <div class="mb-2 flex items-baseline gap-2">
+                                <div class="text-[20px] font-bold text-gray-900 tracking-tight leading-none">
+                                    ${p.price.toLocaleString('ru-RU')} ₽
+                                </div>
+                            </div>
+                            <a href="${PATH_PREFIX}product/index.html?id=${p.id}"
+                                class="text-[13px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors"
+                                title="${p.title}">
+                                ${p.title}
+                            </a>
+                            <div class="mt-auto">
+                                <button onclick="openOrderModal('${p.title.replace(/'/g, "\\'")}', ${p.price}, '${p.sku}', '${PATH_PREFIX}${p.image}')"
+                                    class="w-full bg-accent hover:bg-accent-hover text-white py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                    Заказать
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            lucide.createIcons();
+        });
+    </script>
+    
+</body>
+
+</html>

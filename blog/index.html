@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог — Сфера</title>
+
+    <!-- Подключение шрифтов Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Подключение общих скриптов конфигурации Tailwind -->
+    
+    <!-- Компоненты -->
+    <script src="../components/header.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <script>const PATH_PREFIX = "../";</script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+    <!-- Шапка сайта -->
+    <div id="header-placeholder"></div>
+
+    <!-- Основной контент блога -->
+    <main class="flex-grow max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-8">
+
+        <!-- Хлебные крошки -->
+        <nav aria-label="Хлебные крошки" itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center gap-2 text-[13px] font-medium text-gray-400 mb-6 flex-wrap">
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center gap-2">
+                <a itemprop="item" href="../index.html" class="hover:text-textMain transition-colors flex items-center gap-1">
+                    <span itemprop="name">Главная</span>
+                </a>
+                <meta itemprop="position" content="1" />
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+            </span>
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name" class="text-gray-800 font-semibold">Блог</span>
+                <meta itemprop="position" content="2" />
+            </span>
+        </nav>
+
+        <!-- Заголовок страницы -->
+        <div class="mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Блог</h1>
+        </div>
+
+        <!-- Сетка статей: 4 элемента в ряду (lg:grid-cols-4) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <!-- Статья 1 -->
+            <a href="../blog/detail.html?id=news-1" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Творчество
+                        </span>
+                    </div>
+                    <img src="../images/article-handyman.jpg" alt="Как рукоделие помогает развивать фантазию"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Как рукоделие помогает развивать фантазию и улучшать настроение
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    13 мая 2024
+                </div>
+            </a>
+
+            <!-- Статья 2 -->
+            <a href="../blog/detail.html?id=news-2" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Советы покупателям
+                        </span>
+                    </div>
+                    <img src="../images/article-cleaning.jpg" alt="Здоровое питание без глютена"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Здоровое питание без глютена: как выбрать и приготовить?
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    11 мая 2024
+                </div>
+            </a>
+
+            <!-- Статья 3 -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Советы покупателям
+                        </span>
+                    </div>
+                    <img src="../images/article-ac.jpg" alt="Комфорт и стиль: как выбрать обувь"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Комфорт и стиль: как выбрать обувь для долгих рабочих дней?
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    8 мая 2024
+                </div>
+            </a>
+
+            <!-- Статья 4 -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Стиль и красота
+                        </span>
+                    </div>
+                    <img src="../images/article-puppy.jpg" alt="Топ-5 трендов в моде 2024 года"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Топ-5 трендов в моде 2024 года: какие вещи стоит добавить в гардероб?
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    5 марта 2024
+                </div>
+            </a>
+
+            <!-- Статья 5 (дубль 1) -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Технологии
+                        </span>
+                    </div>
+                    <img src="../images/product-speaker.jpg" alt="Умный дом своими руками"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Умный дом своими руками: с чего начать автоматизацию
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    28 февраля 2024
+                </div>
+            </a>
+
+            <!-- Статья 6 (дубль 2) -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Интерьер
+                        </span>
+                    </div>
+                    <img src="../images/service-handyman.jpg" alt="Ремонт своими силами"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Ремонт своими силами: 10 частых ошибок новичков
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    14 февраля 2024
+                </div>
+            </a>
+
+            <!-- Статья 7 (дубль 3) -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Животные
+                        </span>
+                    </div>
+                    <img src="../images/service-pets.jpg" alt="Как подготовить дом к появлению щенка"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Как подготовить дом к появлению щенка: чек-лист
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    2 февраля 2024
+                </div>
+            </a>
+
+            <!-- Статья 8 (дубль 4) -->
+            <a href="#" class="group flex flex-col">
+                <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                    <div class="absolute top-3 left-3 z-10">
+                        <span class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                            Красота и уход
+                        </span>
+                    </div>
+                    <img src="../images/category-beauty-cosmetics.jpg" alt="Секреты идеальной кожи зимой"
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <h3 class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                    Секреты идеальной кожи зимой: уход и питание
+                </h3>
+                <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                    20 января 2024
+                </div>
+            </a>
+        </div>
+        
+        <!-- Пагинация (опционально, для красоты страницы) -->
+        <div class="mt-12 flex justify-center">
+            <div class="flex items-center gap-2">
+                <button class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-200 text-gray-400 hover:text-textMain hover:border-gray-300 transition-colors">
+                    <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center bg-accent text-white font-medium shadow-md shadow-accent/20">
+                    1
+                </button>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center border border-transparent text-gray-600 hover:bg-gray-100 transition-colors font-medium">
+                    2
+                </button>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center border border-transparent text-gray-600 hover:bg-gray-100 transition-colors font-medium">
+                    3
+                </button>
+                <span class="text-gray-400 px-1">...</span>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center border border-transparent text-gray-600 hover:bg-gray-100 transition-colors font-medium">
+                    8
+                </button>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center border border-gray-200 text-gray-600 hover:text-textMain hover:border-gray-300 transition-colors">
+                    <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

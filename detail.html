@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перенаправление...</title>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('service') || params.get('type') === 'service') {
+            const id = params.get('service') || params.get('id') || 1;
+            window.location.replace(`service-detail.html?id=${id}`);
+        } else {
+            const id = params.get('id') || 1;
+            window.location.replace(`product-detail.html?id=${id}`);
+        }
+    </script>
+</head>
+<body style="font-family: sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #fafafa;">
+    <p>Загрузка детальной информации...</p>
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Универсальный шаблон для сферы услуг</title>
+
+    <!-- Подключение шрифтов Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Подключение стилей и скриптов -->
+    
+    <!-- Компоненты -->
+    <script src="./components/header.js"></script>
+    <script src="./components/footer.js"></script>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <script>const PATH_PREFIX = "./";</script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans">
+    <!-- Шапка сайта -->
+    <div id="header-placeholder"></div>
+
+    <main class="flex-grow flex flex-col gap-20 py-10 pb-24">
+
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <div
+                class="relative w-full h-[540px] md:h-[640px] rounded-3xl overflow-hidden flex items-center bg-[#f8f9fa]">
+                <img src="./images/hero-cover.jpg" alt="Услуги для дома"
+                    class="absolute inset-0 w-full h-full object-cover object-center">
+
+                <div class="relative z-10 max-w-3xl ml-6 sm:ml-16 p-8 sm:p-10">
+                    <h1
+                        class="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] mb-5 text-gray-900 tracking-tight">
+                        <span class="whitespace-nowrap">Универсальный шаблон</span><br>для сферы услуг
+                    </h1>
+                    <p class="text-base md:text-lg text-gray-600 mb-8 font-medium max-w-xl">
+                        Идеально подходит для автосалонов, салонов красоты, аренды недвижимости, стоматологий и любых
+                        компаний, продающих услуги людям.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="px-7 py-3.5 bg-accent hover:bg-accent-hover text-white rounded-lg font-semibold transition-all">
+                            Записаться онлайн
+                        </button>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-8 right-8 z-20 flex items-center gap-4">
+                    <div class="flex items-center gap-2 mr-4">
+                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
+                        <div class="w-2 h-2 rounded-full bg-accent cursor-pointer"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
+                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
+                    </div>
+                    <button
+                        class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-gray-800 hover:text-accent transition-colors border border-gray-100">
+                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button
+                        class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-gray-800 hover:text-accent transition-colors border border-gray-100">
+                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Каталог категорий -->
+        <section class="max-w-[1600px] mx-auto w-full px-6 mb-8">
+            <a href="./categories/index.html" class="flex items-center gap-2 mb-8 group cursor-pointer w-fit">
+                <h2 class="text-3xl font-semibold tracking-tight">Каталог</h2>
+                <i data-lucide="chevron-right"
+                    class="w-6 h-6 text-gray-400 group-hover:text-accent transition-transform mt-1"></i>
+            </a>
+
+            <!-- Сетка категорий (6 элементов с фото 1:1) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 lg:gap-6">
+                <!-- Категория 1: Ремонт техники -->
+                <a href="catalog/index.html?category=electronics" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-refrigerator-repair.jpg" alt="Ремонт техники"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Ремонт техники
+                    </span>
+                </a>
+
+                <!-- Категория 2: Клининг -->
+                <a href="catalog/index.html?category=home" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-cleaning-supplies.jpg" alt="Клининг"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Клининг
+                    </span>
+                </a>
+
+                <!-- Категория 3: Животные -->
+                <a href="catalog/index.html?category=home" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-pets-puppy.jpg" alt="Животные"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Животные
+                    </span>
+                </a>
+
+                <!-- Категория 4: Мастер на час -->
+                <a href="catalog/index.html?category=home" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-handyman-tools.jpg" alt="Мастер на час"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Мастер на час
+                    </span>
+                </a>
+
+                <!-- Категория 5: Красота и уход -->
+                <a href="catalog/index.html?category=clothes" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-beauty-cosmetics.jpg" alt="Красота и уход"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Красота и уход
+                    </span>
+                </a>
+
+                <!-- Категория 6: Автоуслуги -->
+                <a href="catalog/index.html?category=electronics" class="group flex flex-col gap-3">
+                    <div
+                        class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center">
+                        <img src="./images/category-auto-detailing.jpg" alt="Автоуслуги"
+                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <span
+                        class="text-[15px] font-semibold text-gray-900 group-hover:text-accent transition-colors px-1 text-center sm:text-left">
+                        Автоуслуги
+                    </span>
+                </a>
+            </div>
+        </section>
+
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <div class="flex items-center gap-2 mb-8 group cursor-pointer w-fit">
+                <h2 class="text-3xl font-semibold tracking-tight">Популярные услуги</h2>
+                <i data-lucide="chevron-right"
+                    class="w-6 h-6 text-gray-400 group-hover:text-textMain transition-transform mt-1"></i>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                <!-- Услуга 1 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./service/index.html?id=1"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Хит</span>
+                        </div>
+
+                        <img src="./images/service-repair.jpg" alt="Ремонт техники"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 1 500 ₽</div>
+                        </div>
+
+                        <a href="./service/index.html?id=1"
+                            class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">
+                            Диагностика и ремонт бытовой техники и электроники
+                        </a>
+
+                        <!-- Характеристики услуги (DISPLAY_PROPERTIES) -->
+                        <div class="space-y-1.5 mb-4 text-[12px] bg-surfaceLight/80 rounded-xl p-2.5 border border-gray-100/60">
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Срок:</span>
+                                <span class="font-semibold text-gray-800">от 1 до 3 часов</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Выезд мастера:</span>
+                                <span class="font-semibold text-gray-800">Бесплатно</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Гарантия:</span>
+                                <span class="font-semibold text-gray-800">12 месяцев</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Диагностика и ремонт бытовой техники и электроники', 'от 1 500 ₽', 'SRV-001', 'images/service-repair.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Запись онлайн
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Услуга 2 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./service/index.html?id=2"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Советуем</span>
+                        </div>
+
+                        <img src="./images/service-cleaning.jpg" alt="Клининг"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 2 500 ₽</div>
+                        </div>
+
+                        <a href="./service/index.html?id=2"
+                            class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">
+                            Профессиональный клининг квартир и уборка после ремонта
+                        </a>
+
+                        <!-- Характеристики услуги (DISPLAY_PROPERTIES) -->
+                        <div class="space-y-1.5 mb-4 text-[12px] bg-surfaceLight/80 rounded-xl p-2.5 border border-gray-100/60">
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Длительность:</span>
+                                <span class="font-semibold text-gray-800">2–6 часов</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Инвентарь:</span>
+                                <span class="font-semibold text-gray-800">Исполнителя</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Средства:</span>
+                                <span class="font-semibold text-gray-800">Эко-составы</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Профессиональный клининг квартир и уборка после ремонта', 'от 2 500 ₽', 'SRV-002', 'images/service-cleaning.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Запись онлайн
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Услуга 3 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./service/index.html?id=3"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
+                        <img src="./images/service-handyman.jpg" alt="Мастер на час"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 1 000 ₽</span>
+                            <span class="text-[13px] font-medium text-gray-400 line-through decoration-gray-500 leading-none">от 1 200 ₽</span>
+                            <span class="bg-[#FF4D6D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-[4px] leading-none">-15%</span>
+                        </div>
+
+                        <a href="./service/index.html?id=3"
+                            class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">
+                            Мастер на час: сантехника, электрика и сборка мебели
+                        </a>
+
+                        <!-- Характеристики услуги (DISPLAY_PROPERTIES) -->
+                        <div class="space-y-1.5 mb-4 text-[12px] bg-surfaceLight/80 rounded-xl p-2.5 border border-gray-100/60">
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Срочность:</span>
+                                <span class="font-semibold text-gray-800">выезд от 45 мин</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Опыт мастеров:</span>
+                                <span class="font-semibold text-gray-800">от 5 лет</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Инструмент:</span>
+                                <span class="font-semibold text-gray-800">Профессиональный</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Мастер на час: сантехника, электрика и сборка мебели', 'от 1 000 ₽', 'SRV-003', 'images/service-handyman.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Запись онлайн
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Услуга 4 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./service/index.html?id=4"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
+                        <img src="./images/service-pets.jpg" alt="Уход за животными"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 800 ₽</div>
+                        </div>
+
+                        <a href="./service/index.html?id=4"
+                            class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">
+                            Выгул собак, передержка и услуги профессиональных догситтеров
+                        </a>
+
+                        <!-- Характеристики услуги (DISPLAY_PROPERTIES) -->
+                        <div class="space-y-1.5 mb-4 text-[12px] bg-surfaceLight/80 rounded-xl p-2.5 border border-gray-100/60">
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Длительность:</span>
+                                <span class="font-semibold text-gray-800">от 45 мин</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Отчетность:</span>
+                                <span class="font-semibold text-gray-800">Фото и GPS-трек</span>
+                            </div>
+                            <div class="flex items-center justify-between text-gray-500">
+                                <span>Формат:</span>
+                                <span class="font-semibold text-gray-800">На дому</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Выгул собак, передержка и услуги профессиональных догситтеров', 'от 800 ₽', 'SRV-004', 'images/service-pets.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Запись онлайн
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Популярные товары -->
+        <section class="max-w-[1600px] mx-auto w-full px-6 mb-16">
+            <a href="#" class="flex items-center gap-2 mb-8 group cursor-pointer w-fit">
+                <h2 class="text-3xl font-semibold tracking-tight">Популярные товары</h2>
+                <i data-lucide="chevron-right"
+                    class="w-6 h-6 text-gray-400 group-hover:text-accent group-hover:translate-x-1 transition-all mt-1"></i>
+            </a>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+                <!-- Товар 1 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=1"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Новинка</span>
+                        </div>
+
+                        <img src="./images/product-speaker.jpg" alt="Умная колонка Яндекс Станция Миди"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 7482-019
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">12 990 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=1" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Умная колонка Яндекс Станция Миди с голосовым помощником Алиса
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Умная колонка Яндекс Станция Миди с голосовым помощником Алиса', 12990, '7482-019', 'images/product-speaker.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 2 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=2"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Хит</span>
+                        </div>
+
+                        <img src="./images/product-coffee.jpg" alt="Кофеварка рожковая Polaris PCM 1535E Adore Crema"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 3910-845
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">8 490 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=2" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Кофеварка рожковая Polaris PCM 1535E Adore Crema
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Кофеварка рожковая Polaris PCM 1535E Adore Crema', 8490, '3910-845', 'images/product-coffee.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 3 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=3"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="./images/product-dumbbells.jpg" alt="Гантели разборные стальные 2x15 кг"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 5821-304
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">6 290 ₽</span>
+                            <span class="text-[13px] font-medium text-gray-400 line-through decoration-gray-500 leading-none">7 400 ₽</span>
+                            <span class="bg-[#FF4D6D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-[4px] leading-none">-15%</span>
+                        </div>
+                        <a href="./product/index.html?id=3" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Гантели разборные стальные 2x15 кг в кейсе с удлинителем грифа
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Гантели разборные стальные 2x15 кг в кейсе', 6290, '5821-304', 'images/product-dumbbells.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 4 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=4"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="./images/product-hoodie.jpg" alt="Худи оверсайз утепленное с капюшоном"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 1290-773
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">2 150 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=4" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Худи оверсайз утепленное с капюшоном унисекс, цвет изумрудный
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Худи оверсайз утепленное с капюшоном', 2150, '1290-773', 'images/product-hoodie.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 5 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=5"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="./images/product-books.jpg" alt="Подарочный набор бизнес-литературы"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 8452-910
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">5 990 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=5" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Подарочный набор книг в дизайнерском футляре (4 тома в твердом переплете)
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Подарочный набор книг', 5990, '8452-910', 'images/product-books.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 6 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=6"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Новинка</span>
+                        </div>
+
+                        <img src="./images/product-vr.jpg" alt="Шлем виртуальной реальности PRO-4"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 9402-118
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">38 900 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=6" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Шлем виртуальной реальности PRO-4 с контроллерами движения
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Шлем виртуальной реальности PRO-4', 38900, '9402-118', 'images/product-vr.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 7 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=7"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Хит</span>
+                        </div>
+
+                        <img src="./images/product-turntable.jpg" alt="Виниловый проигрыватель Topsi"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 6319-502
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">19 500 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=7" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Виниловый проигрыватель Topsi Hi-Fi в корпусе из натурального дуба
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Виниловый проигрыватель Topsi', 19500, '6319-502', 'images/product-turntable.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 8 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=8"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <img src="./images/product-cheesecake.jpg" alt="Карамельный чизкейк"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 4102-887
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">1 500 ₽</span>
+                            <span class="text-[13px] font-medium text-gray-400 line-through decoration-gray-500 leading-none">1 800 ₽</span>
+                            <span class="bg-[#FF4D6D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-[4px] leading-none">-17%</span>
+                        </div>
+                        <a href="./product/index.html?id=8" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Карамельный чизкейк ручной работы со свежими лесными ягодами 1 кг
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Карамельный чизкейк ручной работы', 1500, '4102-887', 'images/product-cheesecake.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 9 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=9"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-purple-600 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Советуем</span>
+                        </div>
+
+                        <img src="./images/product-sporttop.jpg" alt="Топ спортивный"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 7720-415
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">2 250 ₽</span>
+                            <span class="text-[13px] font-medium text-gray-400 line-through decoration-gray-500 leading-none">2 500 ₽</span>
+                            <span class="bg-[#FF4D6D] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-[4px] leading-none">-10%</span>
+                        </div>
+                        <a href="./product/index.html?id=9" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Топ спортивный удлиненный бесшовный для фитнеса и йоги, цвет фуксия
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Топ спортивный удлиненный', 2250, '7720-415', 'images/product-sporttop.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 10 -->
+                <div
+                    class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                    <a href="./product/index.html?id=10"
+                        class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden p-2 block cursor-pointer">
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
+                            <span
+                                class="bg-emerald-600 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">Новинка</span>
+                        </div>
+
+                        <img src="./images/product-candle.jpg" alt="Набор для создания свечи"
+                            class="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105">
+                    </a>
+
+                    <div class="flex flex-col flex-grow px-2 pb-2">
+                        <div class="text-[11px] text-gray-400 font-medium mb-1 tracking-wide">
+                            Арт. 3209-641
+                        </div>
+                        <div class="mb-2">
+                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">1 450 ₽</div>
+                        </div>
+                        <a href="./product/index.html?id=10" class="text-[14px] font-medium text-gray-800 leading-snug mb-4 line-clamp-2 hover:text-accent transition-colors">
+                            Набор для создания ароматической свечи в ребристом керамическом стакане
+                        </a>
+                        <div class="mt-auto">
+                            <button onclick="openOrderModal('Набор для создания ароматической свечи', 1450, '3209-641', 'images/product-candle.jpg')"
+                                class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
+                                Заказать
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- БЛОК: АКЦИИ (3 карточки в ряду, единый шаблон компонента news.list)       -->
+        <!-- ========================================================================= -->
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <a href="./promos/" class="flex items-center gap-1.5 group cursor-pointer w-fit mb-6">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Акции</h2>
+                <i data-lucide="chevron-right"
+                    class="w-5 h-5 text-gray-400 group-hover:text-textMain group-hover:translate-x-0.5 transition-all mt-0.5"></i>
+            </a>
+
+            <!-- Сетка: 3 элемента в ряду (lg:grid-cols-3) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Акция 1 -->
+                <a href="./promos/" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Скидка 20%
+                            </span>
+                        </div>
+                        <img src="./images/promo-cleaning.jpg" alt="Скидка 20% на генеральную уборку"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                        Скидка 20% на генеральную уборку квартир и коммерческих помещений
+                    </h3>
+                </a>
+
+                <!-- Акция 2 -->
+                <a href="./promos/" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Бесплатно
+                            </span>
+                        </div>
+                        <img src="./images/promo-repair.jpg" alt="Бесплатная диагностика"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                        Бесплатная выездная диагностика бытовой техники при заказе ремонта
+                    </h3>
+                </a>
+
+                <!-- Акция 3 -->
+                <a href="./promos/" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Скидка 10%
+                            </span>
+                        </div>
+                        <img src="./images/promo-welcome.jpg" alt="Скидка 10% на первый заказ"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors">
+                        Приветственная скидка 10% на любой первый заказ на платформе
+                    </h3>
+                </a>
+            </div>
+        </section>
+
+        <!-- О компании -->
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <a href="./about/index.html" class="flex items-center gap-2 mb-8 group cursor-pointer w-fit">
+                <h2 class="text-3xl font-semibold tracking-tight">О компании</h2>
+                <i data-lucide="chevron-right"
+                    class="w-6 h-6 text-gray-400 group-hover:text-textMain transition-transform mt-1"></i>
+            </a>
+
+            <div
+                class="bg-white rounded-[32px] p-6 sm:p-8 lg:p-12 border border-gray-100 flex flex-col lg:flex-row gap-8 lg:gap-16 items-center hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+                <!-- Текст -->
+                <div class="w-full lg:w-1/2 flex flex-col order-2 lg:order-1">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-5 tracking-tight">
+                        Надежный партнер для бизнеса
+                    </h3>
+                    <div class="text-[15px] text-gray-600 leading-relaxed mb-8 space-y-4">
+                        <p>
+                            Сфера — это универсальное решение для компаний, которые ценят качество и безупречный сервис.
+                            Мы объединяем сертифицированных профессионалов из самых разных областей: от ремонта техники
+                            и профессионального клининга до юридического сопровождения и медицинских консультаций.
+                        </p>
+                        <p>
+                            Наша главная цель — создать единую платформу, где каждый клиент может быстро найти надежного
+                            исполнителя. Все специалисты проходят строгий отбор, качество услуг контролируется, а
+                            благодаря прозрачной системе ценообразования вы всегда знаете, за что платите.
+                        </p>
+                    </div>
+
+                    <a href="./about/index.html"
+                        class="bg-accent hover:bg-accent-hover text-white px-7 py-3.5 rounded-lg font-semibold text-[15px] transition-colors w-fit mt-auto inline-block">
+                        Подробнее о нас
+                    </a>
+                </div>
+
+                <!-- Фото компании -->
+                <div class="w-full lg:w-1/2 relative order-1 lg:order-2">
+                    <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-surfaceLight">
+                        <img src="./images/about-company.jpg" alt="О компании"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- БЛОК: БЛОГ (4 карточки в ряду, тот же шаблон компонента)                  -->
+        <!-- ========================================================================= -->
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <div class="flex items-center gap-1.5 group cursor-pointer w-fit mb-6">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Блог</h2>
+                <i data-lucide="chevron-right"
+                    class="w-5 h-5 text-gray-400 group-hover:text-textMain group-hover:translate-x-0.5 transition-all mt-0.5"></i>
+            </div>
+
+            <!-- Сетка: 4 элемента в ряду (lg:grid-cols-4) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Статья 1 -->
+                <a href="blog/detail.html?id=news-1" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Творчество
+                            </span>
+                        </div>
+                        <img src="./images/article-handyman.jpg" alt="Как рукоделие помогает развивать фантазию"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                        Как рукоделие помогает развивать фантазию и улучшать настроение
+                    </h3>
+                    <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                        13 мая 2024
+                    </div>
+                </a>
+
+                <!-- Статья 2 -->
+                <a href="blog/detail.html?id=news-2" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Советы покупателям
+                            </span>
+                        </div>
+                        <img src="./images/article-cleaning.jpg" alt="Здоровое питание без глютена"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                        Здоровое питание без глютена: как выбрать и приготовить?
+                    </h3>
+                    <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                        11 мая 2024
+                    </div>
+                </a>
+
+                <!-- Статья 3 -->
+                <a href="#" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Советы покупателям
+                            </span>
+                        </div>
+                        <img src="./images/article-ac.jpg" alt="Комфорт и стиль: как выбрать обувь"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                        Комфорт и стиль: как выбрать обувь для долгих рабочих дней?
+                    </h3>
+                    <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                        8 мая 2024
+                    </div>
+                </a>
+
+                <!-- Статья 4 -->
+                <a href="#" class="group flex flex-col">
+                    <div class="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-surfaceLight mb-3.5">
+                        <div class="absolute top-3 left-3 z-10">
+                            <span
+                                class="bg-black/35 backdrop-blur-md text-white text-[11px] sm:text-[12px] font-medium px-3 py-1 rounded-md tracking-wide">
+                                Стиль и красота
+                            </span>
+                        </div>
+                        <img src="./images/article-puppy.jpg" alt="Топ-5 трендов в моде 2024 года"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <h3
+                        class="text-[14px] sm:text-[15px] font-bold text-gray-900 leading-snug line-clamp-2 group-hover:text-accent transition-colors mb-1.5">
+                        Топ-5 трендов в моде 2024 года: какие вещи стоит добавить в гардероб?
+                    </h3>
+                    <div class="text-[12px] text-gray-400 font-normal mt-auto">
+                        5 марта 2024
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+
+</body>
+
+</html>

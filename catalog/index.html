@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров — Сфера</title>
+
+    <!-- Подключение шрифтов Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Подключение общих скриптов конфигурации Tailwind -->
+    
+    <!-- Компоненты -->
+    <script src="../components/header.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Подключение скрипта каталога -->
+    <script src="../js/db.js"></script>
+    <script src="catalog.js" defer></script>
+
+    <script>const PATH_PREFIX = "../";</script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+    <!-- Шапка сайта -->
+    <div id="header-placeholder"></div>
+
+    <!-- Основной контент каталога -->
+    <main class="flex-grow max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-8">
+
+        <!-- Хлебные крошки (Цепочка навигации 1С-Битрикс: bitrix:breadcrumb) -->
+        <nav aria-label="Хлебные крошки" itemscope itemtype="https://schema.org/BreadcrumbList"
+            class="flex items-center gap-2 text-[13px] font-medium text-gray-400 mb-6 flex-wrap">
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"
+                class="flex items-center gap-2">
+                <a itemprop="item" href="../index.html"
+                    class="hover:text-textMain transition-colors flex items-center gap-1">
+                    <span itemprop="name">Главная</span>
+                </a>
+                <meta itemprop="position" content="1" />
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+            </span>
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"
+                class="flex items-center gap-2">
+                <a itemprop="item" href="../categories/index.html"
+                    class="hover:text-accent transition-colors font-medium text-gray-500">
+                    <span itemprop="name">Каталог</span>
+                </a>
+                <meta itemprop="position" content="2" />
+                <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-300"></i>
+            </span>
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span itemprop="name" id="catalog-crumb-category" class="text-gray-800 font-semibold">Все товары</span>
+                <meta itemprop="position" content="3" />
+            </span>
+        </nav>
+
+        <!-- Заголовок страницы -->
+        <div class="mb-6">
+            <h1 id="catalog-page-title" class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Каталог
+                товаров</h1>
+        </div>
+
+        <!-- Горизонтальные быстрые фильтры (Pill tabs) -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none mb-8">
+            <button data-category="all"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-accent text-white shadow-md shadow-accent/20">
+                Все товары
+            </button>
+            <button data-category="electronics"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-surfaceLight text-gray-700 hover:bg-gray-200">
+                Электроника
+            </button>
+            <button data-category="home"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-surfaceLight text-gray-700 hover:bg-gray-200">
+                Для дома и уюта
+            </button>
+            <button data-category="sport"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-surfaceLight text-gray-700 hover:bg-gray-200">
+                Спорт и фитнес
+            </button>
+            <button data-category="clothes"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-surfaceLight text-gray-700 hover:bg-gray-200">
+                Одежда
+            </button>
+            <button data-category="books"
+                class="cat-pill whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all bg-surfaceLight text-gray-700 hover:bg-gray-200">
+                Книги
+            </button>
+        </div>
+
+        <!-- Основной блок с сайдбаром и сеткой -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+
+            <!-- Боковая панель фильтров (Desktop Sidebar) -->
+            <aside
+                class="w-full lg:w-72 shrink-0 bg-white rounded-[24px] border border-gray-100 p-6 shadow-sm sticky top-28 space-y-7">
+                <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                    <h3 class="font-bold text-gray-900 text-lg flex items-center gap-2">
+                        <i data-lucide="sliders-horizontal" class="w-5 h-5 text-accent"></i>
+                        <span>Фильтры</span>
+                    </h3>
+                    <button id="reset-filters-btn"
+                        class="text-xs font-semibold text-accent hover:text-accent-hover transition-colors">
+                        Сбросить
+                    </button>
+                </div>
+
+                <!-- Фильтр по категориям -->
+                <div>
+                    <h4 class="font-semibold text-gray-900 text-sm mb-3">Категории</h4>
+                    <div class="space-y-2.5 text-[14px]">
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="all" checked
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Все категории</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-all">10</span>
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="electronics"
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Электроника</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-electronics">3</span>
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="home"
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Для дома и уюта</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-home">3</span>
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="sport"
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Спорт и фитнес</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-sport">1</span>
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="clothes"
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Одежда</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-clothes">2</span>
+                        </label>
+                        <label class="flex items-center justify-between cursor-pointer group">
+                            <span
+                                class="flex items-center gap-2.5 text-gray-700 group-hover:text-accent transition-colors">
+                                <input type="radio" name="cat-filter" value="books"
+                                    class="w-4 h-4 text-accent focus:ring-accent border-gray-300">
+                                <span>Книги</span>
+                            </span>
+                            <span class="text-xs font-medium text-gray-400" id="count-books">1</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Фильтр по цене -->
+                <div class="pt-4 border-t border-gray-100">
+                    <h4 class="font-semibold text-gray-900 text-sm mb-3">Цена, ₽</h4>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="relative flex-1">
+                            <span class="absolute left-3 top-2 text-xs text-gray-400 font-medium">от</span>
+                            <input type="number" id="price-min" value="0" min="0" max="50000"
+                                class="w-full bg-surfaceLight border border-gray-200 rounded-lg pl-8 pr-2 py-1.5 text-sm font-medium text-gray-800 focus:outline-none focus:border-accent">
+                        </div>
+                        <div class="relative flex-1">
+                            <span class="absolute left-3 top-2 text-xs text-gray-400 font-medium">до</span>
+                            <input type="number" id="price-max" value="50000" min="0" max="50000"
+                                class="w-full bg-surfaceLight border border-gray-200 rounded-lg pl-8 pr-2 py-1.5 text-sm font-medium text-gray-800 focus:outline-none focus:border-accent">
+                        </div>
+                    </div>
+                    <input type="range" id="price-slider" min="0" max="50000" step="500" value="50000"
+                        class="w-full h-1.5 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-accent">
+                </div>
+
+                <!-- Фильтр по наличию -->
+                <div class="pt-4 border-t border-gray-100">
+                    <h4 class="font-semibold text-gray-900 text-sm mb-3">Наличие и доставка</h4>
+                    <div class="space-y-2.5 text-[14px]">
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" id="filter-instock"
+                                class="w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>В наличии</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" id="filter-fastdelivery"
+                                class="w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>Быстрая доставка (сегодня)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Фильтр по бейджам / акциям -->
+                <div class="pt-4 border-t border-gray-100">
+                    <h4 class="font-semibold text-gray-900 text-sm mb-3">Спецпредложения</h4>
+                    <div class="space-y-2.5 text-[14px]">
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" value="badge-hit"
+                                class="filter-badge-check w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>Хиты продаж</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" value="badge-discount"
+                                class="filter-badge-check w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>Товары со скидкой</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" value="badge-new"
+                                class="filter-badge-check w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>Новинки</span>
+                        </label>
+                        <label
+                            class="flex items-center gap-2.5 cursor-pointer text-gray-700 hover:text-accent transition-colors">
+                            <input type="checkbox" value="badge-advise"
+                                class="filter-badge-check w-4 h-4 text-accent rounded focus:ring-accent border-gray-300">
+                            <span>Рекомендуем</span>
+                        </label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Основная область с товарами -->
+            <div class="flex-grow w-full space-y-6">
+
+                <!-- Панель поиска и сортировки -->
+                <div
+                    class="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <!-- Поиск по каталогу -->
+                    <div class="relative w-full sm:w-80">
+                        <i data-lucide="search"
+                            class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" id="catalog-search-input" placeholder="Поиск по названию или категории..."
+                            class="w-full bg-surfaceLight border border-gray-200 rounded-lg pl-10 pr-4 py-2.5 text-sm font-medium text-gray-800 placeholder-gray-400 focus:outline-none focus:border-accent">
+                    </div>
+
+                    <!-- Сортировка -->
+                    <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                        <span class="text-xs font-semibold text-gray-400 whitespace-nowrap">Сортировка:</span>
+                        <select id="catalog-sort-select"
+                            class="bg-surfaceLight border border-gray-200 rounded-lg px-3 py-2 text-sm font-semibold text-gray-800 focus:outline-none focus:border-accent cursor-pointer">
+                            <option value="popular">По популярности</option>
+                            <option value="price-asc">Сначала дешевле</option>
+                            <option value="price-desc">Сначала дороже</option>
+                            <option value="rating">По рейтингу</option>
+                            <option value="discount">По размеру скидки</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Сетка товаров (динамически заполняется из catalog.js) -->
+                <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+                    <!-- Карточки товаров генерируются скриптом -->
+                </div>
+
+                <!-- Состояние: Ничего не найдено -->
+                <div id="empty-state"
+                    class="hidden bg-white rounded-[28px] border border-gray-100 p-12 text-center my-8 shadow-sm">
+                    <div
+                        class="w-16 h-16 bg-blue-50 text-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="search-x" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Ничего не найдено</h3>
+                    <p class="text-gray-500 max-w-md mx-auto text-sm mb-6">
+                        Попробуйте изменить параметры поиска, расширить диапазон цен или сбросить фильтры.
+                    </p>
+                    <button onclick="resetAllFilters()"
+                        class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-sm transition-all">
+                        Сбросить все фильтры
+                    </button>
+                </div>
+
+                <!-- Пагинация (Шаблон компонента system.pagenavigation для 1С-Битрикс) -->
+                <div id="catalog-pagination" class="pt-8 flex items-center justify-center border-t border-gray-100">
+                    <!-- Постраничная навигация (Битрикс pagenavigation) -->
+                    <div class="flex items-center gap-1.5">
+                        <button
+                            class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-400 hover:text-gray-700 hover:bg-surfaceLight flex items-center justify-center transition-colors disabled:opacity-40 disabled:cursor-not-allowed">
+                            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-xl bg-accent text-white font-bold text-sm flex items-center justify-center shadow-sm">
+                            1
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 font-semibold text-sm hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+                            2
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 font-semibold text-sm hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+                            3
+                        </button>
+                        <span class="px-2 text-gray-400 font-medium">...</span>
+                        <button
+                            class="w-10 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 font-semibold text-sm hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+                            8
+                        </button>
+                        <button
+                            class="px-4 h-10 rounded-xl bg-white border border-gray-200 text-gray-700 font-semibold text-sm hover:border-accent hover:text-accent flex items-center justify-center transition-colors">
+                            Вперед
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

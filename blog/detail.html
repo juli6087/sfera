@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Статья — Сфера</title>
+
+    <!-- Подключение шрифтов Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение иконок Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Подключение скрипта и стилей -->
+    <script src="../components/header.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Данные для динамической загрузки -->
+    <script src="../js/db.js"></script>
+
+    <script>const PATH_PREFIX = "../";</script>
+</head>
+
+<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+    <!-- Шапка сайта -->
+    <div id="header-placeholder"></div>
+
+    
+    <main class="flex-grow max-w-[1600px] mx-auto w-full px-6 py-8 md:py-12">
+
+        <!-- Хлебные крошки -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+            <ol class="flex items-center gap-2 text-[13px] text-gray-500 font-medium flex-wrap" id="breadcrumbs">
+                <li><a href="../index.html" class="hover:text-textMain transition-colors">Главная</a></li>
+                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
+                <li id="bc-category"><a href="#" class="hover:text-textMain transition-colors"
+                        id="bc-category-link">Раздел</a></li>
+                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
+                <li class="text-gray-900 font-semibold truncate max-w-[300px] md:max-w-md" id="bc-title">Статья</li>
+            </ol>
+        </nav>
+
+        <!-- Заголовок и мета -->
+        <div class="mb-8">
+            <h1 id="article-title" class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight leading-tight mb-4">
+                Заголовок статьи
+            </h1>
+            <div class="flex items-center gap-3 text-gray-500 text-[14px]">
+                <span id="article-date">Дата</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                <span id="article-category">Категория</span>
+            </div>
+        </div>
+
+        <!-- Контент с обтеканием -->
+        <div class="clearfix">
+            <img id="article-image" src="" alt="Обложка" class="float-none sm:float-left w-full sm:w-[400px] md:w-[500px] lg:w-[600px] mr-0 sm:mr-10 mb-6 rounded-2xl object-cover">
+            <div class="prose prose-lg max-w-none text-gray-800 text-[16px] md:text-[17px] leading-relaxed" id="article-content">
+                Контент...
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Подвал сайта -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = urlParams.get('id');
+
+            // Безопасные сеттеры
+            const setImg = (id, src) => { const el = document.getElementById(id); if (el) el.src = src; };
+            const setText = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
+            const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
+
+            let article = null;
+            if (typeof NEWS_DATA !== 'undefined') {
+                article = NEWS_DATA.find(a => a.id === articleId) || NEWS_DATA[0];
+            }
+
+            if (article) {
+                document.title = `${article.title} — Сфера`;
+                setText('page-title', `${article.title} — Сфера`);
+                setText('bc-title', article.title);
+                setText('bc-category-link', article.category);
+                
+                if (true) {
+                    setHref('bc-category-link', PATH_PREFIX + 'blog/index.html');
+                    
+                }
+
+                setText('article-category', article.category);
+                setText('article-title', article.title);
+                setText('article-date', article.date);
+                setImg('article-image', PATH_PREFIX + article.image);
+                
+                const contentEl = document.getElementById('article-content');
+                if (contentEl) {
+                    contentEl.innerHTML = article.content;
+                }
+            }
+            
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
