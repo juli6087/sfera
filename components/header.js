@@ -74,13 +74,15 @@ const HEADER_HTML = `
     </div>
 </header>
 
-<!-- Строка сервисного меню под шапкой -->
+<!-- Строка меню под шапкой (основные разделы, как в сайдбаре) -->
 <div class="bg-white border-b border-gray-100 relative z-[90]">
-    <div class="max-w-[1600px] mx-auto px-6 h-[42px] flex items-center gap-2 sm:gap-4 overflow-x-auto scrollbar-hide">
-        <a href="__PREFIX__promos/index.html" class="header-cat-link">Спецпредложения</a>
-        <a href="__PREFIX__about/index.html#delivery" class="header-cat-link">Доставка и оплата</a>
-        <a href="__PREFIX__about/index.html#how-to-order" class="header-cat-link">Как сделать заказ</a>
-        <a href="__PREFIX__about/index.html#b2b" class="header-cat-link">Корпоративным клиентам</a>
+    <div class="max-w-[1600px] mx-auto px-6 h-[42px] flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none scrollbar-hide">
+        <a href="__PREFIX__catalog/index.html?type=products" class="header-cat-link">Товары</a>
+        <a href="__PREFIX__catalog/index.html?type=services" class="header-cat-link">Услуги</a>
+        <a href="__PREFIX__promos/index.html" class="header-cat-link">Акции</a>
+        <a href="__PREFIX__blog/index.html" class="header-cat-link">Блог</a>
+        <a href="__PREFIX__about/index.html" class="header-cat-link">О компании</a>
+        <a href="__PREFIX__contacts/index.html" class="header-cat-link">Контакты</a>
     </div>
 </div>`;
 
