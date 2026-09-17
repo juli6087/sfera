@@ -1,8 +1,8 @@
 
-const FOOTER_HTML = `<footer class="bg-white border-t border-gray-100 mt-auto pt-12 pb-10">
+const FOOTER_HTML = `<footer class="bg-white border-t border-[hsl(240,1.82%,89.22%)] mt-auto pt-12 pb-10">
         <div class="max-w-[1600px] mx-auto w-full px-6">
             <!-- Верхняя часть: сетка из 4 колонок -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 pb-10 border-b border-gray-100">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 pb-10 border-b border-[hsl(240,1.82%,89.22%)]">
                 <!-- 1. Бренд -->
                 <div class="col-span-2 md:col-span-1 flex flex-col items-start gap-3">
                     <a href="__PREFIX__index.html" class="flex items-center gap-2.5 group no-underline">

@@ -8,7 +8,7 @@ const HEADER_HTML = `
 <!-- Боковой drawer — стартует ниже шапки, привязан к общему контейнеру -->
 <div id="nav-drawer"
     class="fixed left-0 bottom-0 bg-white z-[99] flex flex-col"
-    style="top:60px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:16px 0 32px -16px rgba(15,23,42,0.08);border-right:1px solid #f1f5f9;">
+    style="top:60px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:16px 0 32px -16px rgba(15,23,42,0.08);border-right:1px solid hsl(240, 1.82%, 89.22%);">
 
     <!-- Навигация — выровнена по левому краю контейнера страницы (max-w-[1600px] + 24px) -->
     <nav class="flex-1 pt-8 pb-4">
@@ -31,7 +31,7 @@ const HEADER_HTML = `
 
 
 <!-- Шапка -->
-<header class="sticky top-0 z-[100] bg-white border-b border-gray-100">
+<header class="sticky top-0 z-[100] bg-white border-b border-[hsl(240,1.82%,89.22%)]">
     <div class="max-w-[1600px] mx-auto px-6 h-[60px] flex items-center justify-between">
 
         <!-- Левая часть: гамбургер + логотип -->
@@ -58,7 +58,7 @@ const HEADER_HTML = `
 
             <!-- Поиск — инпут в шапке (белый фон со статичным тонким бордером) -->
             <div id="search-wrap"
-                style="display:flex;align-items:center;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;">
+                style="display:flex;align-items:center;background:#ffffff;border:1px solid hsl(240, 1.82%, 89.22%);border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;">
                 <i data-lucide="search" class="w-4 h-4" style="color:#64748b;flex-shrink:0;"></i>
                 <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
                     oninput="_onSearchInput(this)"
@@ -75,7 +75,7 @@ const HEADER_HTML = `
 </header>
 
 <!-- Строка меню под шапкой (основные разделы, как в сайдбаре) -->
-<div class="bg-white border-b border-gray-100 relative z-[90]">
+<div class="bg-white border-b border-[hsl(240,1.82%,89.22%)] relative z-[90]">
     <div class="max-w-[1600px] mx-auto px-6 h-[42px] flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none scrollbar-hide">
         <a href="__PREFIX__catalog/index.html?type=products" class="header-cat-link">Товары</a>
         <a href="__PREFIX__catalog/index.html?type=services" class="header-cat-link">Услуги</a>
@@ -117,7 +117,7 @@ const HEADER_STYLES = `
     padding-bottom: 20px;
     padding-left: calc(max(0px, (100vw - 1600px) / 2) + 24px);
     padding-right: 32px;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid hsl(240, 1.82%, 89.22%);
 }
 .header-drawer-link:hover {
     color: #00a3ff;
