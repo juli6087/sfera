@@ -5,12 +5,12 @@ const HEADER_HTML = `
     class="hidden fixed left-0 right-0 bottom-0 z-[98] bg-black/25"
     style="top:60px;transition:opacity 0.25s;"></div>
 
-<!-- Боковой drawer — стартует ниже шапки -->
+<!-- Боковой drawer — стартует ниже шапки, привязан к общему контейнеру -->
 <div id="nav-drawer"
     class="fixed left-0 bottom-0 bg-white z-[99] flex flex-col"
-    style="top:60px;width:460px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:16px 0 32px -16px rgba(15,23,42,0.08);border-right:1px solid #f1f5f9;">
+    style="top:60px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:16px 0 32px -16px rgba(15,23,42,0.08);border-right:1px solid #f1f5f9;">
 
-    <!-- Навигация — выровнена по левому краю иконки ≡ в шапке (24px) -->
+    <!-- Навигация — выровнена по левому краю контейнера страницы (max-w-[1600px] + 24px) -->
     <nav class="flex-1 pt-8 pb-4">
         <a href="__PREFIX__catalog/index.html?type=products" class="header-drawer-link" onclick="closeNavDrawer()">Товары</a>
         <a href="__PREFIX__catalog/index.html?type=services" class="header-drawer-link" onclick="closeNavDrawer()">Услуги</a>
@@ -21,7 +21,7 @@ const HEADER_HTML = `
     </nav>
 
     <!-- Телефон -->
-    <div style="padding:20px 32px 20px 184px;border-top:1px solid #f1f5f9;">
+    <div class="header-drawer-footer">
         <a href="tel:+78000000000"
             class="text-[14px] font-semibold text-textMain hover:text-accent transition-colors no-underline tracking-tight">
             +7 (800) 000-00-00
@@ -89,9 +89,16 @@ const HEADER_HTML = `
 // ─── Стили ────────────────────────────────────────────────────────────────────
 const HEADER_STYLES = `
 <style id="header-styles">
+#nav-drawer {
+    width: calc(max(0px, (100vw - 1600px) / 2) + 380px);
+    max-width: 100vw;
+}
 .header-drawer-link {
     display: block;
-    padding: 11px 32px 11px 184px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: calc(max(0px, (100vw - 1600px) / 2) + 24px);
+    padding-right: 32px;
     text-decoration: none;
     color: #1a1a1a;
     font-size: 16px;
@@ -99,6 +106,16 @@ const HEADER_STYLES = `
     font-family: 'Inter', sans-serif;
     letter-spacing: -0.1px;
     transition: color 0.15s;
+}
+.header-drawer-link:hover {
+    color: #00a3ff;
+}
+.header-drawer-footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: calc(max(0px, (100vw - 1600px) / 2) + 24px);
+    padding-right: 32px;
+    border-top: 1px solid #f1f5f9;
 }
 .header-drawer-link:hover {
     color: #00a3ff;
