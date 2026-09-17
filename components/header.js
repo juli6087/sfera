@@ -31,58 +31,62 @@ const HEADER_HTML = `
 
 
 <!-- Шапка -->
-<header class="sticky top-0 z-[100] bg-white border-b border-[hsl(240,1.82%,89.22%)]">
-    <div class="max-w-[1600px] mx-auto px-6 h-[60px] flex items-center justify-between">
+<header class="sticky top-0 z-[100] bg-white">
+    <div class="max-w-[1600px] mx-auto px-6">
+        <div class="h-[60px] flex items-center justify-between border-b border-[hsl(240,1.82%,89.22%)]">
 
-        <!-- Левая часть: гамбургер + логотип -->
-        <div class="flex items-center gap-4 flex-shrink-0">
-            <button id="hamburger-btn" onclick="toggleNavDrawer()" title="Меню"
-                class="p-2 rounded-lg text-textMain hover:bg-surfaceLight transition-all flex items-center -ml-2">
-                <i id="hamburger-icon" data-lucide="menu" class="w-[22px] h-[22px]"></i>
-            </button>
-            <a href="__PREFIX__index.html" class="flex items-center gap-2 group no-underline">
-                <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="text-accent group-hover:-translate-y-0.5 transition-transform duration-300">
-                    <path d="M18 6 L 30 11 L 18 16 L 6 11 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
-                    <path d="M6 18 L 18 23 L 30 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
-                    <path d="M6 25 L 18 30 L 30 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
-                </svg>
-                <span class="text-[20px] font-semibold tracking-tight text-textMain leading-none">
-                    Сфера<span class="text-accent">.</span>
-                </span>
-            </a>
-        </div>
-
-        <!-- Правая часть: поиск -->
-        <div class="flex items-center gap-4">
-
-            <!-- Поиск — инпут в шапке (белый фон со статичным тонким бордером) -->
-            <div id="search-wrap"
-                style="display:flex;align-items:center;background:#ffffff;border:1px solid hsl(240, 1.82%, 89.22%);border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;">
-                <i data-lucide="search" class="w-4 h-4" style="color:#64748b;flex-shrink:0;"></i>
-                <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
-                    oninput="_onSearchInput(this)"
-                    onkeydown="_onSearchKeyDown(event, this)"
-                    style="flex:1;border:none;outline:none;font-size:13px;color:#0f172a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
-                <button id="search-clear-btn" onclick="_clearSearch()"
-                    style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#64748b;line-height:0;">
-                    <i data-lucide="x" class="w-4 h-4"></i>
+            <!-- Левая часть: гамбургер + логотип -->
+            <div class="flex items-center gap-4 flex-shrink-0">
+                <button id="hamburger-btn" onclick="toggleNavDrawer()" title="Меню"
+                    class="p-2 rounded-lg text-textMain hover:bg-surfaceLight transition-all flex items-center -ml-2">
+                    <i id="hamburger-icon" data-lucide="menu" class="w-[22px] h-[22px]"></i>
                 </button>
+                <a href="__PREFIX__index.html" class="flex items-center gap-2 group no-underline">
+                    <svg width="24" height="24" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="text-accent group-hover:-translate-y-0.5 transition-transform duration-300">
+                        <path d="M18 6 L 30 11 L 18 16 L 6 11 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                        <path d="M6 18 L 18 23 L 30 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+                        <path d="M6 25 L 18 30 L 30 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
+                    </svg>
+                    <span class="text-[20px] font-semibold tracking-tight text-textMain leading-none">
+                        Сфера<span class="text-accent">.</span>
+                    </span>
+                </a>
             </div>
 
+            <!-- Правая часть: поиск -->
+            <div class="flex items-center gap-4">
+
+                <!-- Поиск — инпут в шапке (белый фон со статичным тонким бордером) -->
+                <div id="search-wrap"
+                    style="display:flex;align-items:center;background:#ffffff;border:1px solid hsl(240, 1.82%, 89.22%);border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;">
+                    <i data-lucide="search" class="w-4 h-4" style="color:#64748b;flex-shrink:0;"></i>
+                    <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
+                        oninput="_onSearchInput(this)"
+                        onkeydown="_onSearchKeyDown(event, this)"
+                        style="flex:1;border:none;outline:none;font-size:13px;color:#0f172a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
+                    <button id="search-clear-btn" onclick="_clearSearch()"
+                        style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#64748b;line-height:0;">
+                        <i data-lucide="x" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+            </div>
         </div>
     </div>
 </header>
 
 <!-- Строка меню под шапкой (основные разделы, как в сайдбаре) -->
-<div class="bg-white border-b border-[hsl(240,1.82%,89.22%)] relative z-[90]">
-    <div class="max-w-[1600px] mx-auto px-6 h-[42px] flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none scrollbar-hide">
-        <a href="__PREFIX__catalog/index.html?type=products" class="header-cat-link">Товары</a>
-        <a href="__PREFIX__catalog/index.html?type=services" class="header-cat-link">Услуги</a>
-        <a href="__PREFIX__promos/index.html" class="header-cat-link">Акции</a>
-        <a href="__PREFIX__blog/index.html" class="header-cat-link">Блог</a>
-        <a href="__PREFIX__about/index.html" class="header-cat-link">О компании</a>
-        <a href="__PREFIX__contacts/index.html" class="header-cat-link">Контакты</a>
+<div class="bg-white relative z-[90]">
+    <div class="max-w-[1600px] mx-auto px-6">
+        <div class="h-[42px] flex items-center gap-1 sm:gap-2 overflow-x-auto scrollbar-none scrollbar-hide border-b border-[hsl(240,1.82%,89.22%)]">
+            <a href="__PREFIX__catalog/index.html?type=products" class="header-cat-link">Товары</a>
+            <a href="__PREFIX__catalog/index.html?type=services" class="header-cat-link">Услуги</a>
+            <a href="__PREFIX__promos/index.html" class="header-cat-link">Акции</a>
+            <a href="__PREFIX__blog/index.html" class="header-cat-link">Блог</a>
+            <a href="__PREFIX__about/index.html" class="header-cat-link">О компании</a>
+            <a href="__PREFIX__contacts/index.html" class="header-cat-link">Контакты</a>
+        </div>
     </div>
 </div>`;
 
