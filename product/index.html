@@ -252,11 +252,12 @@
                 setText('product-reviews', `${product.reviewsCount || 48} отзывов`);
                 setText('product-short-desc', product.description || '');
 
-                // Вывод DETAIL_TEXT (Детальное описание из Битрикс со сниппетом таблицы характеристик)
+                // Вывод DETAIL_TEXT (Детальное описание из Битрикс со сниппетами)
                 const detailContainer = document.getElementById('product-detail-content');
                 if (detailContainer) {
                     if (product.detailHtml) {
-                        detailContainer.innerHTML = product.detailHtml;
+                        const prefix = (typeof PATH_PREFIX !== 'undefined') ? PATH_PREFIX : '../';
+                        detailContainer.innerHTML = product.detailHtml.replace(/src="(?:(?:\.\.\/|\.\/)?images\/)([^"]+)"/g, `src="${prefix}images/$1"`);
                     } else {
                         let html = `<p class="mb-6 text-[15px] leading-relaxed text-gray-700">${product.description}</p>`;
                         

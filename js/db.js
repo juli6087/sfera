@@ -149,6 +149,52 @@ const PRODUCTS_DATA = [
     <li>Установите посуду и нажмите кнопку TARE для компенсации веса тары перед добавлением ингредиентов.</li>
 </ol>
 
+<!-- Сниппет: Картинка слева + Текст справа -->
+<div class="snippet-media-left">
+    <div class="snippet-media-img">
+        <img src="images/product-scales.webp" alt="Корпус из нержавеющей стали">
+    </div>
+    <div class="snippet-media-content">
+        <h4>Корпус из нержавеющей стали</h4>
+        <p>Платформа выполнена из пищевой нержавеющей стали марки SUS304, устойчивой к воздействию пищевых кислот, влаги и механическим повреждениям при ежедневном использовании.</p>
+    </div>
+</div>
+
+<!-- Сниппет: Текст слева + Картинка справа -->
+<div class="snippet-media-right">
+    <div class="snippet-media-content">
+        <h4>Скрытый монолитный LED-экран</h4>
+        <p>Крупные цифровые символы с мягкой белой подсветкой четко различимы под любым углом освещения, а при выключении весов экран становится полностью невидимым.</p>
+    </div>
+    <div class="snippet-media-img">
+        <img src="images/product-scales.webp" alt="Скрытый LED-экран">
+    </div>
+</div>
+
+<!-- Сниппет: Одиночное изображение с подписью -->
+<figure class="snippet-image-single">
+    <div class="snippet-image-wrap">
+        <img src="images/product-scales.webp" alt="Точность взвешивания на кухне">
+    </div>
+    <figcaption class="snippet-caption">Лабораторная точность взвешивания ингредиентов от 0.1 г до 5 кг</figcaption>
+</figure>
+
+<!-- Сниппет: Две картинки рядом (Duo Grid) -->
+<div class="snippet-images-duo">
+    <figure class="snippet-image-item">
+        <div class="snippet-image-wrap">
+            <img src="images/product-scales.webp" alt="Сенсорная панель управления">
+        </div>
+        <figcaption class="snippet-caption">Сенсорное управление TARE и UNIT</figcaption>
+    </figure>
+    <figure class="snippet-image-item">
+        <div class="snippet-image-wrap">
+            <img src="images/product-scales.webp" alt="Противоскользящее основание">
+        </div>
+        <figcaption class="snippet-caption">Прорезиненное основание против скольжения</figcaption>
+    </figure>
+</div>
+
 <!-- Сниппет: Информационный блок / Уведомление -->
 <div class="snippet-callout">
     <strong>Рекомендация по уходу:</strong> Протирайте платформу из нержавеющей стали мягкой влажной салфеткой из микрофибры. Не погружайте корпус весов в воду и не мойте их в посудомоечной машине.
