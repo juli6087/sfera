@@ -56,17 +56,17 @@ const HEADER_HTML = `
         <!-- Правая часть: поиск -->
         <div class="flex items-center gap-4">
 
-            <!-- Поиск — инпут в шапке, иконка в стилистике -->
+            <!-- Поиск — инпут в шапке (белый фон с тонким бордером) -->
             <div id="search-wrap"
-                style="display:flex;align-items:center;background:#f4f5f7;border-radius:8px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;transition:background 0.2s,box-shadow 0.2s;">
-                <i data-lucide="search" class="w-5 h-5" style="color:#374151;flex-shrink:0;"></i>
+                style="display:flex;align-items:center;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;transition:border-color 0.2s,box-shadow 0.2s;">
+                <i data-lucide="search" class="w-4 h-4" style="color:#64748b;flex-shrink:0;"></i>
                 <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
                     oninput="_onSearchInput(this)"
                     onkeydown="_onSearchKeyDown(event, this)"
-                    style="flex:1;border:none;outline:none;font-size:13px;color:#1a1a1a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
+                    style="flex:1;border:none;outline:none;font-size:13px;color:#0f172a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
                 <button id="search-clear-btn" onclick="_clearSearch()"
-                    style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#374151;line-height:0;">
-                    <i data-lucide="x" class="w-5 h-5"></i>
+                    style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#64748b;line-height:0;">
+                    <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
 
@@ -144,8 +144,8 @@ const HEADER_STYLES = `
     color: #1a1a1a;
 }
 #search-wrap:focus-within {
-    background: #eef0f2;
-    box-shadow: 0 0 0 2px rgba(0,163,255,0.15);
+    border-color: #00a3ff !important;
+    box-shadow: 0 0 0 1px #00a3ff;
 }
 </style>`;
 
