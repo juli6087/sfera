@@ -152,7 +152,7 @@ const PRODUCTS_DATA = [
 <!-- Сниппет: Картинка слева + Текст справа -->
 <div class="snippet-media-left">
     <div class="snippet-media-img">
-        <img src="images/product-scales.webp" alt="Корпус из нержавеющей стали">
+        <img src="images/placeholder.svg" alt="Изображение товара">
     </div>
     <div class="snippet-media-content">
         <h4>Корпус из нержавеющей стали</h4>
@@ -167,14 +167,14 @@ const PRODUCTS_DATA = [
         <p>Крупные цифровые символы с мягкой белой подсветкой четко различимы под любым углом освещения, а при выключении весов экран становится полностью невидимым.</p>
     </div>
     <div class="snippet-media-img">
-        <img src="images/product-scales.webp" alt="Скрытый LED-экран">
+        <img src="images/placeholder.svg" alt="Изображение товара">
     </div>
 </div>
 
 <!-- Сниппет: Одиночное изображение с подписью -->
 <figure class="snippet-image-single">
     <div class="snippet-image-wrap">
-        <img src="images/product-scales.webp" alt="Точность взвешивания на кухне">
+        <img src="images/placeholder.svg" alt="Изображение товара">
     </div>
     <figcaption class="snippet-caption">Лабораторная точность взвешивания ингредиентов от 0.1 г до 5 кг</figcaption>
 </figure>
@@ -183,13 +183,13 @@ const PRODUCTS_DATA = [
 <div class="snippet-images-duo">
     <figure class="snippet-image-item">
         <div class="snippet-image-wrap">
-            <img src="images/product-scales.webp" alt="Сенсорная панель управления">
+            <img src="images/placeholder.svg" alt="Изображение товара 1">
         </div>
         <figcaption class="snippet-caption">Сенсорное управление TARE и UNIT</figcaption>
     </figure>
     <figure class="snippet-image-item">
         <div class="snippet-image-wrap">
-            <img src="images/product-scales.webp" alt="Противоскользящее основание">
+            <img src="images/placeholder.svg" alt="Изображение товара 2">
         </div>
         <figcaption class="snippet-caption">Прорезиненное основание против скольжения</figcaption>
     </figure>
