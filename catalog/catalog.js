@@ -258,7 +258,7 @@ function renderCatalog() {
                 </div>
 
                 <a href="${item.detailUrl}"
-                    class="text-[14px] font-medium text-gray-800 leading-snug mb-2 line-clamp-2"
+                    class="text-[14px] font-normal text-gray-800 leading-snug mb-2 line-clamp-2"
                     title="${item.title}">
                     ${item.title}
                 </a>

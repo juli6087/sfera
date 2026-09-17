@@ -138,7 +138,7 @@ function renderServicesList() {
                 </div>
 
                 <a href="${PATH_PREFIX}service/index.html?id=${service.id}"
-                    class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors"
+                    class="text-[14px] font-normal text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors"
                     title="${service.title}">
                     ${service.title}
                 </a>
