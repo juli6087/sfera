@@ -33,7 +33,7 @@
     <script>const PATH_PREFIX = "../";</script>
 </head>
 
-<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+<body class="min-h-screen flex flex-col font-sans bg-[#f9f9f9]">
     <!-- Шапка сайта -->
     <div id="header-placeholder"></div>
 
@@ -45,9 +45,7 @@
             <ol class="flex items-center gap-2 text-[13px] text-gray-500 font-medium flex-wrap" id="breadcrumbs">
                 <li><a href="../index.html" class="hover:text-textMain transition-colors">Главная</a></li>
                 <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
-                <li><a href="../services/index.html" class="hover:text-textMain transition-colors">Услуги</a></li>
-                <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
-                <li id="bc-category"><a href="../services/index.html" class="hover:text-textMain transition-colors" id="bc-category-link">Ремонт</a></li>
+                <li><a href="../catalog/index.html?type=services" class="hover:text-textMain transition-colors">Услуги</a></li>
                 <li><i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-400"></i></li>
                 <li class="text-gray-900 font-semibold truncate max-w-[300px] md:max-w-md" id="bc-title">Услуга</li>
             </ol>
@@ -73,7 +71,7 @@
 
                 <!-- Главное фото -->
                 <div class="w-full bg-white rounded-2xl p-0 border border-gray-100 flex items-center justify-center relative overflow-hidden group aspect-[3/4]">
-                    <div id="service-badge-container" class="absolute top-4 left-4 z-20">
+                    <div id="service-badge-container" class="absolute top-4 right-4 z-20">
                         <span id="service-badge" class="bg-orange-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow-sm">
                             Советуем
                         </span>
@@ -99,85 +97,31 @@
                     Профессиональное выполнение работ сертифицированными специалистами. Быстрый выезд, фиксированные цены по прайсу и официальная гарантия на все виды работ.
                 </p>
 
-                <!-- Опции услуги -->
-                <div class="mb-8 flex flex-col gap-6">
-                    <!-- Срочность -->
-                    <div>
-                        <div class="text-[14px] text-gray-900 mb-2.5">Тип выезда:</div>
-                        <div class="flex flex-wrap gap-2">
-                            <button class="px-4 py-2.5 border-2 border-accent rounded-xl text-[13px] font-semibold text-gray-900 bg-white">
-                                Плановый (сегодня/завтра)
-                            </button>
-                            <button class="px-4 py-2.5 border border-gray-200 hover:border-gray-400 rounded-xl text-[13px] font-medium text-gray-600 bg-white transition-colors">
-                                Срочный (в течение 1 часа)
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Расширенная гарантия -->
-                    <div>
-                        <div class="text-[14px] text-gray-900 mb-2.5">Гарантийный период:</div>
-                        <div class="flex flex-wrap gap-2">
-                            <button class="px-4 py-2.5 border-2 border-accent rounded-xl text-[13px] font-semibold text-gray-900 bg-white">
-                                6 месяцев (базовая)
-                            </button>
-                            <button class="px-4 py-2.5 border border-gray-200 hover:border-gray-400 rounded-xl text-[13px] font-medium text-gray-600 bg-white transition-colors flex items-center gap-1.5">
-                                <i data-lucide="shield-plus" class="w-4 h-4 text-emerald-500"></i>
-                                12 месяцев (+900 ₽)
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
+                <!-- Характеристики услуги (вводятся через сниппет в Битрикс) -->
                 <div class="mb-6">
-                    <div class="flex flex-col gap-2.5 text-[13px]" id="service-props-list">
+                    <div class="flex flex-col gap-2.5 text-[14px]" id="service-props-list">
                         <!-- Свойства услуги -->
-                        <div class="flex items-end gap-2">
-                            <span class="text-gray-500">Выезд мастера</span>
-                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
-                            <span class="text-gray-900 font-medium text-right">Бесплатно</span>
-                        </div>
-                        <div class="flex items-end gap-2">
-                            <span class="text-gray-500">Гарантия на работу</span>
-                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
-                            <span class="text-gray-900 font-medium text-right">от 6 месяцев</span>
-                        </div>
-                        <div class="flex items-end gap-2">
-                            <span class="text-gray-500">Опыт мастеров</span>
-                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
-                            <span class="text-gray-900 font-medium text-right">от 5 лет</span>
-                        </div>
                     </div>
                     <a href="#details-tab" class="text-accent text-[13px] font-semibold mt-4 inline-block hover:underline">
-                        Подробное описание
+                        Подробнее
                     </a>
                 </div>
             </div>
 
             <!-- Правая колонка: Buy Box (около 25%) -->
             <div class="w-full lg:w-[25%] flex flex-col gap-4 lg:sticky lg:top-24 z-10">
-                <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg shadow-gray-200/30">
+                <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-xs">
                     <div class="flex items-baseline gap-2 mb-1">
                         <span id="service-price" class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">от 1 500 ₽</span>
                     </div>
                     
-                    <div class="text-[12px] text-gray-500 mb-5 leading-tight">
-                        Точная стоимость рассчитывается после диагностики
-                    </div>
-
-                    <div class="text-[13px] font-medium text-emerald-700 bg-emerald-50 px-3 py-2.5 rounded-xl inline-flex w-fit items-center gap-2 mb-6">
-                        <div class="w-2 h-2 rounded-full bg-emerald-500 relative">
-                            <div class="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-50"></div>
-                        </div>
-                        Свободные мастера в вашем районе
+                    <div class="text-[12px] text-gray-500 mb-6 leading-tight">
+                        Точная стоимость рассчитывается после консультации/диагностики
                     </div>
 
                     <div class="flex flex-col gap-3">
-                        <button id="btn-service-order" class="w-full bg-accent hover:bg-accent-hover text-white py-4 px-4 rounded-xl font-bold text-[15px] transition-colors flex items-center justify-center gap-2">
-                            Запись онлайн
-                        </button>
-                        <button id="btn-service-consult" class="w-full bg-surfaceLight hover:bg-gray-200 text-gray-800 py-4 px-4 rounded-xl font-semibold text-[14px] transition-colors flex items-center justify-center gap-2">
-                            Консультация
+                        <button id="btn-service-order" class="w-full bg-accent hover:bg-accent-hover text-white py-3.5 px-4 rounded-xl font-bold text-[15px] transition-all flex items-center justify-center gap-2 active:scale-95 shadow-xs">
+                            Заказать услугу
                         </button>
                     </div>
 
@@ -188,31 +132,19 @@
                         </div>
                         <div class="flex items-start gap-2">
                             <span class="text-gray-300 font-bold leading-none mt-0.5">•</span>
-                            <span>Быстрый выезд по всей территории</span>
+                            <span>Быстрый выезд специалистов</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Вкладки: Описание, Отзывы (WB Style) -->
-        <div class="bg-white rounded-3xl border border-gray-100 p-6 md:p-10 shadow-sm mb-16" id="details-tab">
-            <!-- Заголовки табов -->
-            <div class="border-b border-gray-100 flex gap-6 md:gap-8 mb-8 overflow-x-auto text-[14px] md:text-[15px] font-semibold">
-                <button class="text-accent border-b-2 border-accent pb-4 flex items-center gap-2 whitespace-nowrap">
-                    <span>Подробное описание</span>
-                </button>
-                <button class="text-gray-400 hover:text-gray-800 pb-4 transition-colors whitespace-nowrap">
-                    Цены
-                </button>
-                <button class="text-gray-400 hover:text-gray-800 pb-4 transition-colors whitespace-nowrap">
-                    Примеры работ
-                </button>
-            </div>
-
-            <!-- Контент активного таба (Описание) -->
-            <div class="prose max-w-none text-gray-600 text-[15px] leading-relaxed">
-                <p class="mb-4">
+        <!-- Блок Детального описания из Битрикс (DETAIL_TEXT) -->
+        <div class="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 md:p-10 shadow-xs mb-16" id="details-tab">
+            <h2 class="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Об услуге</h2>
+            
+            <div id="service-detail-content" class="content-area max-w-none text-gray-700 text-[15px] leading-relaxed">
+                <p id="service-full-desc" class="mb-4">
                     Профессиональное выполнение работ сертифицированными специалистами. Мы используем только качественные материалы и современное оборудование, что позволяет нам гарантировать высокий результат.
                 </p>
                 <ul class="list-disc pl-5 space-y-2 mt-4 text-gray-700">
@@ -227,80 +159,10 @@
         <!-- Блок: С этой услугой заказывают -->
         <div class="mb-16">
             <div class="flex items-center justify-between mb-8">
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">С этим часто заказывают</h2>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">С этой услугой часто заказывают</h2>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 xl:grid-cols-5 gap-6" id="ordered-together-grid">
-
-                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                    <a href="../service/index.html?id=1" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
-                        <img src="../images/service-repair.jpg" alt="Диагностика и ремонт бытовой техники" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </a>
-                    <div class="flex flex-col flex-grow px-2 pb-2">
-                        <div class="mb-2">
-                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 1 500 ₽</div>
-                        </div>
-                        <a href="../service/index.html?id=1" class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">Диагностика и ремонт бытовой техники</a>
-                        <div class="mt-auto">
-                            <button onclick="openOrderModal('Диагностика и ремонт бытовой техники', 'от 1 500 ₽', 'SRV-001', 'images/service-repair.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                    <a href="../service/index.html?id=2" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
-                        <img src="../images/service-cleaning.jpg" alt="Профессиональный клининг квартир" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </a>
-                    <div class="flex flex-col flex-grow px-2 pb-2">
-                        <div class="mb-2">
-                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 2 500 ₽</div>
-                        </div>
-                        <a href="../service/index.html?id=2" class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">Профессиональный клининг квартир</a>
-                        <div class="mt-auto">
-                            <button onclick="openOrderModal('Профессиональный клининг квартир', 'от 2 500 ₽', 'SRV-002', 'images/service-cleaning.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                    <a href="../service/index.html?id=3" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
-                        <img src="../images/service-handyman.jpg" alt="Мастер на час: сантехника, электрика" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </a>
-                    <div class="flex flex-col flex-grow px-2 pb-2">
-                        <div class="mb-2">
-                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 1 000 ₽</div>
-                        </div>
-                        <a href="../service/index.html?id=3" class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">Мастер на час: сантехника, электрика</a>
-                        <div class="mt-auto">
-                            <button onclick="openOrderModal('Мастер на час: сантехника, электрика', 'от 1 000 ₽', 'SRV-003', 'images/service-handyman.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                    <a href="../service/index.html?id=4" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
-                        <img src="../images/service-pets.jpg" alt="Уход за животными и выгул собак" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </a>
-                    <div class="flex flex-col flex-grow px-2 pb-2">
-                        <div class="mb-2">
-                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 800 ₽</div>
-                        </div>
-                        <a href="../service/index.html?id=4" class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">Уход за животными и выгул собак</a>
-                        <div class="mt-auto">
-                            <button onclick="openOrderModal('Уход за животными и выгул собак', 'от 800 ₽', 'SRV-004', 'images/service-pets.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                    <a href="../service/index.html?id=5" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
-                        <img src="../images/category-cleaning-supplies.jpg" alt="Химчистка мягкой мебели" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </a>
-                    <div class="flex flex-col flex-grow px-2 pb-2">
-                        <div class="mb-2">
-                            <div class="text-[22px] font-bold text-gray-900 tracking-tight leading-none">от 3 000 ₽</div>
-                        </div>
-                        <a href="../service/index.html?id=5" class="text-[14px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors">Химчистка мягкой мебели</a>
-                        <div class="mt-auto">
-                            <button onclick="openOrderModal('Химчистка мягкой мебели', 'от 3 000 ₽', 'SRV-005', 'images/category-cleaning-supplies.jpg')" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded-lg font-semibold text-[13px] transition-colors">Заказать</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4 sm:gap-5" id="ordered-together-grid">
+                <!-- Карточки услуг 3:4 рендерятся из JS в точном дизайне каталога -->
             </div>
         </div>
 
@@ -319,11 +181,12 @@
             const service = (typeof SERVICES_DATA !== 'undefined' ? SERVICES_DATA.find(s => s.id === serviceId) : null) || (typeof SERVICES_DATA !== 'undefined' ? SERVICES_DATA[0] : null);
 
             if (service) {
+                const setText = (id, txt) => { const el = document.getElementById(id); if (el) el.innerText = txt; };
+                const setHref = (id, href) => { const el = document.getElementById(id); if (el) el.href = href; };
+
                 document.title = `${service.title} — Сфера`;
                 setText('page-title', `${service.title} — Сфера`);
                 setText('bc-title', service.title);
-                setText('bc-category-link', service.categoryName || 'Услуги');
-                setHref('bc-category-link', PATH_PREFIX + `services/index.html?category=${service.category}`);
 
                 setText('service-title', service.title);
                 setText('service-sku', `Код: ${service.sku}`);
@@ -333,14 +196,8 @@
                     setText('service-old-price', `от ${service.oldPrice.toLocaleString('ru-RU')} ₽`);
                     document.getElementById('service-old-price').classList.remove('hidden');
                 } else {
-                    document.getElementById('service-old-price').classList.add('hidden');
-                }
-
-                if (service.discount) {
-                    setText('service-discount', `-${service.discount}%`);
-                    document.getElementById('service-discount').classList.remove('hidden');
-                } else {
-                    document.getElementById('service-discount').classList.add('hidden');
+                    const el = document.getElementById('service-old-price');
+                    if (el) el.classList.add('hidden');
                 }
 
                 if (service.badge) {
@@ -356,57 +213,88 @@
                 mainImg.src = (PATH_PREFIX + service.image);
                 mainImg.alt = service.title;
 
-                // Характеристики (DISPLAY_PROPERTIES)
+                const thumb1 = document.getElementById('thumb-1');
+                const thumb2 = document.getElementById('thumb-2');
+                if (thumb1) thumb1.src = (PATH_PREFIX + service.image);
+                if (thumb2) thumb2.src = (PATH_PREFIX + service.image);
+
+                // Характеристики с пунктирными линиями
                 const propsList = document.getElementById('service-props-list');
                 if (propsList && service.properties) {
                     propsList.innerHTML = service.properties.map(p => `
-                        <div class="flex items-center justify-between text-gray-500 py-1.5 border-b border-gray-50 last:border-0">
-                            <span>${p.name}</span>
-                            <span class="font-semibold text-gray-800">${p.value}</span>
+                        <div class="flex items-end gap-2">
+                            <span class="text-gray-500">${p.name}</span>
+                            <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                            <span class="text-gray-900 font-medium text-right">${p.value}</span>
                         </div>
                     `).join('');
                 }
 
-                // Кнопки заказа
-                const btnOrder = document.getElementById('btn-service-order');
-                btnOrder.onclick = () => openOrderModal(service.title, `от ${service.price.toLocaleString('ru-RU')} ₽`, service.sku, (PATH_PREFIX + service.image));
+                // Вывод DETAIL_TEXT (Детальное описание услуги)
+                const detailContainer = document.getElementById('service-detail-content');
+                if (detailContainer) {
+                    if (service.detailHtml) {
+                        detailContainer.innerHTML = service.detailHtml;
+                    } else if (service.description) {
+                        let html = `<p class="mb-6 text-[15px] leading-relaxed text-gray-700">${service.description}</p>`;
+                        if (service.properties && service.properties.length > 0) {
+                            html += `
+                            <div class="flex flex-col gap-3.5 max-w-2xl text-[14px] my-6">
+                                ${service.properties.map(prop => `
+                                    <div class="flex items-end gap-2">
+                                        <span class="text-gray-500 shrink-0">${prop.name}</span>
+                                        <div class="flex-grow border-b border-dotted border-gray-300 relative top-[-4px]"></div>
+                                        <span class="text-gray-900 font-medium text-right shrink-0">${prop.value}</span>
+                                    </div>
+                                `).join('')}
+                            </div>`;
+                        }
+                        detailContainer.innerHTML = html;
+                    }
+                }
 
-                const btnConsult = document.getElementById('btn-service-consult');
-                btnConsult.onclick = () => openOrderModal(`Консультация: ${service.title}`, `от ${service.price.toLocaleString('ru-RU')} ₽`, service.sku, (PATH_PREFIX + service.image));
+                // Кнопка заказа
+                const btnOrder = document.getElementById('btn-service-order');
+                if (btnOrder) {
+                    btnOrder.onclick = () => openOrderModal(service.title, service.price, service.sku, (PATH_PREFIX + service.image));
+                }
             }
 
-            // Рендер других услуг
-            const relatedGrid = document.getElementById('related-services-grid');
+            // Рендер сопутствующих услуг (3:4 формат карточки)
+            const relatedGrid = document.getElementById('ordered-together-grid');
             if (relatedGrid && typeof SERVICES_DATA !== 'undefined') {
-                const related = SERVICES_DATA.filter(s => s.id !== service.id).slice(0, 4);
+                const related = SERVICES_DATA.filter(s => s.id !== (service ? service.id : 0)).slice(0, 5);
                 relatedGrid.innerHTML = related.map(s => `
-                    <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
-                        <a href="${PATH_PREFIX}service/index.html?id=${s.id}" class="relative bg-surfaceLight rounded-2xl h-48 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
+                    <div class="flex flex-col group bg-white rounded-2xl p-2.5 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                        <a href="${PATH_PREFIX}service/index.html?id=${s.id}" class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-3 block cursor-pointer bg-white">
                             ${s.badge ? `
-                            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">
-                                <span class="${s.badge.bgClass} text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm uppercase tracking-wider">
+                            <div class="absolute top-2.5 right-2.5 flex flex-wrap gap-1.5 z-10">
+                                <span class="${s.badge.bgClass} ${s.badge.bgClass.includes('text-') ? '' : 'text-white'} text-[10px] font-bold px-2 py-0.5 rounded-md shadow-xs uppercase tracking-wider">
                                     ${s.badge.text}
                                 </span>
                             </div>` : ''}
                             <img src="${PATH_PREFIX}${s.image}" alt="${s.title}"
-                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                onerror="this.src='${PATH_PREFIX}images/placeholder.jpg'">
                         </a>
 
-                        <div class="flex flex-col flex-grow px-2 pb-2">
-                            <div class="mb-2">
-                                <div class="text-[20px] font-bold text-gray-900 tracking-tight leading-none">
+                        <div class="flex flex-col flex-grow px-1 pb-1">
+                            <div class="mb-2 flex items-baseline flex-wrap gap-1.5">
+                                <div class="text-[20px] sm:text-[22px] font-bold text-gray-900 tracking-tight leading-none">
                                     от ${s.price.toLocaleString('ru-RU')} ₽
                                 </div>
                             </div>
+
                             <a href="${PATH_PREFIX}service/index.html?id=${s.id}"
-                                class="text-[13px] font-medium text-gray-800 leading-snug mb-3 line-clamp-2 hover:text-accent transition-colors"
+                                class="text-[14px] font-medium text-gray-800 leading-snug mb-2 line-clamp-2"
                                 title="${s.title}">
                                 ${s.title}
                             </a>
-                            <div class="mt-auto">
-                                <button onclick="openOrderModal('${s.title.replace(/'/g, "\\'")}', 'от ${s.price.toLocaleString('ru-RU')} ₽', '${s.sku}', '${PATH_PREFIX}${s.image}')"
-                                    class="w-full bg-accent hover:bg-accent-hover text-white py-2.5 rounded-lg font-semibold text-[13px] transition-colors">
-                                    Заказать
+
+                            <div class="mt-auto pt-3">
+                                <button onclick="openOrderModal('${s.title.replace(/'/g, "\\'")}', ${s.price}, '${s.sku || 'SRV-' + s.id}', '${PATH_PREFIX}${s.image}')"
+                                    class="bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-xl font-semibold text-[13px] transition-all shadow-xs inline-flex items-center justify-center active:scale-95">
+                                    Заказать услугу
                                 </button>
                             </div>
                         </div>
@@ -414,10 +302,11 @@
                 `).join('');
             }
 
-            lucide.createIcons();
+            if (window.lucide) {
+                lucide.createIcons();
+            }
         });
     </script>
-    
 </body>
 
 </html>

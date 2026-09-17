@@ -47,69 +47,264 @@ body {
 .badge-discount { background-color: #ff4757; color: white; }
 
 /* Стили для контента из визуального редактора Битрикс */
+/* ========================================================================== */
+/* СНИППЕТЫ ДЛЯ ВИЗУАЛЬНОГО РЕДАКТОРА БИТРИКС (DETAIL_TEXT)                   */
+/* ========================================================================== */
+
+/* 1. Базовая типографика */
+.content-area {
+    color: #374151;
+    font-size: 14.5px;
+    line-height: 1.65;
+}
 .content-area h2 {
-    font-size: 1.625rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: #111827;
     margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
     line-height: 1.3;
 }
 .content-area h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: #1f2937;
-    margin-top: 1.5rem;
+    color: #111827;
+    margin-top: 1.75rem;
     margin-bottom: 0.75rem;
     line-height: 1.4;
 }
 .content-area p {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: #374151;
-    margin-bottom: 1.25rem;
-}
-.content-area ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #374151;
-}
-.content-area ul li {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    margin-bottom: 0.5rem;
-}
-.content-area ol {
-    list-style-type: decimal;
-    margin-left: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #374151;
-}
-.content-area ol li {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    margin-bottom: 0.5rem;
-}
-.content-area blockquote {
-    background: #f4f5f7;
-    border-left: 4px solid #00a3ff;
-    padding: 1.25rem 1.5rem;
-    border-radius: 0 1rem 1rem 0;
-    font-style: italic;
-    color: #1f2937;
-    margin: 1.75rem 0;
-}
-.content-area img {
-    border-radius: 1rem;
-    max-width: 100%;
-    height: auto;
-}
-.content-area a {
-    color: #00a3ff;
-    text-decoration: underline;
-}
-.content-area a:hover {
-    color: #0090e6;
+    margin-bottom: 1.15rem;
+    color: #4b5563;
 }
 
+/* 2. Сниппет: Характеристики с точечной линией */
+.content-area .snippet-props,
+.content-area .props-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    max-width: 640px;
+    margin: 1.25rem 0;
+    font-size: 13.5px;
+}
+.content-area .prop-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+.content-area .prop-name {
+    color: #6b7280;
+    flex-shrink: 0;
+}
+.content-area .prop-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted #e5e7eb;
+    position: relative;
+    top: -4px;
+}
+.content-area .prop-val {
+    color: #111827;
+    font-weight: 500;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* 3. Сниппет: Маркированный список (Unordered List) */
+.content-area ul.snippet-list-bullet,
+.content-area ul.snippet-list-check,
+.content-area ul:not([class]) {
+    list-style: none;
+    padding-left: 0;
+    margin: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.content-area ul.snippet-list-bullet li,
+.content-area ul.snippet-list-check li,
+.content-area ul:not([class]) li {
+    position: relative;
+    padding-left: 1.25rem;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.content-area ul.snippet-list-bullet li::before,
+.content-area ul.snippet-list-check li::before,
+.content-area ul:not([class]) li::before {
+    content: "•";
+    position: absolute;
+    left: 0.15rem;
+    top: 0;
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 4. Сниппет: Нумерованный список (Ordered List) */
+.content-area ol.snippet-list-num,
+.content-area ol:not([class]) {
+    list-style: none;
+    counter-reset: custom-counter;
+    padding-left: 0;
+    margin: 1.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+.content-area ol.snippet-list-num li,
+.content-area ol:not([class]) li {
+    counter-increment: custom-counter;
+    position: relative;
+    padding-left: 1.5rem;
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.content-area ol.snippet-list-num li::before,
+.content-area ol:not([class]) li::before {
+    content: counter(custom-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #9ca3af;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+/* 5. Сниппет: Таблица (премиальный минималистичный дизайн) */
+.content-area .snippet-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    background: #ffffff;
+}
+.content-area table.snippet-table,
+.content-area table:not([class]) {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+}
+.content-area > table.snippet-table,
+.content-area > table:not([class]) {
+    margin: 1.5rem 0;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.content-area table.snippet-table thead,
+.content-area table:not([class]) thead {
+    background-color: #fafbfc;
+}
+.content-area table.snippet-table th,
+.content-area table:not([class]) th {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748b;
+    border-bottom: 1px solid #f1f5f9;
+    white-space: nowrap;
+    letter-spacing: -0.01em;
+}
+.content-area table.snippet-table td,
+.content-area table:not([class]) td {
+    padding: 13px 18px;
+    border-bottom: 1px solid #f8fafc;
+    color: #475569;
+    font-size: 13.5px;
+}
+.content-area table.snippet-table td:first-child,
+.content-area table:not([class]) td:first-child {
+    color: #0f172a;
+    font-weight: 500;
+}
+.content-area table.snippet-table tr:last-child td,
+.content-area table:not([class]) tr:last-child td {
+    border-bottom: none;
+}
+
+/* 6. Сниппет: Цитата (минималистичный редакционный стиль) */
+.content-area blockquote.snippet-quote,
+.content-area blockquote:not([class]) {
+    margin: 1.5rem 0;
+    padding: 0.4rem 0 0.4rem 1.25rem;
+    border-left: 2px solid #111827;
+    background: transparent !important;
+    color: #1f2937;
+    font-size: 14.5px;
+    line-height: 1.65;
+    font-style: italic;
+}
+.content-area blockquote .quote-author {
+    display: block;
+    font-style: normal;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #6b7280;
+    margin-top: 0.45rem;
+}
+
+/* 7. Сниппет: Информационный блок / Уведомление (без иконок и анимаций) */
+.content-area .snippet-callout {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 0.9rem 1.15rem;
+    margin: 1.25rem 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #374151;
+}
+
+/* 8. Сниппет: Карточки особенностей (минималистичные, статические) */
+.content-area .snippet-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.85rem;
+    margin: 1.25rem 0;
+}
+.content-area .snippet-feature-card {
+    background: #f9fafb;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.content-area .snippet-feature-title {
+    font-weight: 600;
+    color: #111827;
+    font-size: 13.5px;
+}
+.content-area .snippet-feature-desc {
+    color: #6b7280;
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+
+/* Полное отключение анимаций и переходов внутри контента сниппетов */
+.content-area,
+.content-area * {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* Утилита скрытия скроллбара */
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+    display: none;
+}

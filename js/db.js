@@ -2,6 +2,214 @@
 
 const PRODUCTS_DATA = [
     {
+        "id": 11,
+        "sku": "8421-101",
+        "title": "Кухонные электронные весы Tuvio с LED-дисплеем и точностью 0.1 г",
+        "category": "home",
+        "categoryName": "Товары",
+        "price": 1490,
+        "oldPrice": 1990,
+        "discount": 25,
+        "rating": 4.9,
+        "reviewsCount": 48,
+        "image": "images/product-scales.webp",
+        "badge": {
+            "bgClass": "bg-red-500",
+            "text": "Новинка"
+        },
+        "inStock": true,
+        "fastDelivery": true,
+        "description": "Электронные кухонные весы Tuvio от Яндекс Фабрики с ярким LED-дисплеем, платформой из нержавеющей стали и высокой точностью измерений от 0.1 г.",
+        "properties": [
+            { "name": "Бренд", "value": "Tuvio (Яндекс Фабрика)" },
+            { "name": "Точность", "value": "0.1 г" },
+            { "name": "Дисплей", "value": "Скрытый LED" },
+            { "name": "Максимальный вес", "value": "5 кг" }
+        ],
+        "detailHtml": `<p class="mb-6 text-[14.5px] leading-relaxed text-gray-700">
+    Электронные кухонные весы <strong>Tuvio</strong> от Яндекс Фабрики сочетают в себе высокую точность измерений, минималистичный дизайн и надежную конструкцию. Платформа из матовой нержавеющей стали устойчива к царапинам и легко очищается, а скрытый LED-дисплей загорается только во время взвешивания, придавая устройству монолитный и лаконичный вид.
+</p>
+
+<!-- Сниппет: Карточки преимуществ / Особенности -->
+<div class="snippet-features">
+    <div class="snippet-feature-card">
+        <div class="snippet-feature-title">Точность 0.1 г</div>
+        <div class="snippet-feature-desc">Высокочувствительный тензодатчик для идеального соблюдения рецептур</div>
+    </div>
+    <div class="snippet-feature-card">
+        <div class="snippet-feature-title">Скрытый LED-экран</div>
+        <div class="snippet-feature-desc">Крупная белая индикация, невидимая в выключенном состоянии</div>
+    </div>
+    <div class="snippet-feature-card">
+        <div class="snippet-feature-title">Функция тарокомпенсации</div>
+        <div class="snippet-feature-desc">Мгновенный сброс веса тары одной сенсорной кнопкой TARE</div>
+    </div>
+</div>
+
+<h3 class="text-[16px] font-semibold text-gray-900 mt-8 mb-3.5">Технические характеристики</h3>
+<!-- Сниппет: Характеристики с точечным разделителем -->
+<div class="snippet-props">
+    <div class="prop-item">
+        <span class="prop-name">Бренд</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">Tuvio (Яндекс Фабрика)</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Шаг измерения (точность)</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">0.1 г (до 1 кг) / 1 г (до 5 кг)</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Максимальная нагрузка</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">5 000 г (5 кг)</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Тип дисплея</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">Скрытый цифровой LED</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Материал платформы</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">Матовая нержавеющая сталь SUS304</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Единицы измерения</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">г, кг, мл, oz, lb</span>
+    </div>
+    <div class="prop-item">
+        <span class="prop-name">Питание</span>
+        <div class="prop-dots"></div>
+        <span class="prop-val">3 × AAA (в комплекте)</span>
+    </div>
+</div>
+
+<h3 class="text-[16px] font-semibold text-gray-900 mt-8 mb-3.5">Сравнение режимов и диапазонов взвешивания</h3>
+<!-- Сниппет: Таблица -->
+<div class="snippet-table-wrap">
+    <table class="snippet-table">
+        <thead>
+            <tr>
+                <th>Режим измерения</th>
+                <th>Единица</th>
+                <th>Мин. вес</th>
+                <th>Макс. вес</th>
+                <th>Погрешность</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Точное взвешивание (специи, дрожжи)</td>
+                <td>граммы (g)</td>
+                <td>0.5 г</td>
+                <td>1 000 г</td>
+                <td>±0.1 г</td>
+            </tr>
+            <tr>
+                <td>Стандартное взвешивание (мука, крупы)</td>
+                <td>граммы / кг</td>
+                <td>1 г</td>
+                <td>5 000 г</td>
+                <td>±1 г</td>
+            </tr>
+            <tr>
+                <td>Объем жидкостей (вода, молоко)</td>
+                <td>миллилитры (ml)</td>
+                <td>1 мл</td>
+                <td>5 000 мл</td>
+                <td>±1 мл</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h3 class="text-[16px] font-semibold text-gray-900 mt-8 mb-3.5">Особенности модели и комплектация</h3>
+<!-- Сниппет: Маркированный список -->
+<ul class="snippet-list-bullet">
+    <li>Автоматическое отключение через 2 минуты бездействия для экономии заряда батарей.</li>
+    <li>Индикация перегрузки (Err) и низкого заряда батареи (Lo) на дисплее.</li>
+    <li>Прорезиненные противоскользящие ножки для стабильной фиксации на столешнице.</li>
+    <li>В комплекте: кухонные весы, комплект щелочных батареек AAA, руководство пользователя и гарантийный талон.</li>
+</ul>
+
+<!-- Сниппет: Цитата -->
+<blockquote class="snippet-quote">
+    «В кулинарии и кондитерском деле точность до десятых грамма определяет итоговую текстуру и правильный результат. Весы Tuvio обеспечивают высокую точность при простом и понятном управлении.»
+    <span class="quote-author">— Михаил Смирнов, шеф-кондитер</span>
+</blockquote>
+
+<h3 class="text-[16px] font-semibold text-gray-900 mt-8 mb-3.5">Пошаговое руководство по использованию</h3>
+<!-- Сниппет: Нумерованный список -->
+<ol class="snippet-list-num">
+    <li>Установите входящие в комплект элементы питания AAA в отсек на нижней панели, соблюдая полярность.</li>
+    <li>Поместите весы на ровную твердую горизонтальную поверхность.</li>
+    <li>Нажмите сенсорную кнопку ON/OFF и дождитесь появления значения «0.0 g» на LED-дисплее.</li>
+    <li>Установите посуду и нажмите кнопку TARE для компенсации веса тары перед добавлением ингредиентов.</li>
+</ol>
+
+<!-- Сниппет: Информационный блок / Уведомление -->
+<div class="snippet-callout">
+    <strong>Рекомендация по уходу:</strong> Протирайте платформу из нержавеющей стали мягкой влажной салфеткой из микрофибры. Не погружайте корпус весов в воду и не мойте их в посудомоечной машине.
+</div>`,
+        "modifications": []
+    },
+    {
+        "id": 12,
+        "sku": "8421-102",
+        "title": "Погружной блендер 3в1 Tuvio 1500 Вт с измельчителем и венчиком",
+        "category": "home",
+        "categoryName": "Товары",
+        "price": 3290,
+        "oldPrice": 4290,
+        "discount": 23,
+        "rating": 4.9,
+        "reviewsCount": 64,
+        "image": "images/product-blender.webp",
+        "badge": {
+            "bgClass": "bg-orange-500",
+            "text": "Хит"
+        },
+        "inStock": true,
+        "fastDelivery": true,
+        "description": "Мощный погружной блендер 3в1 Tuvio мощностью 1500 Вт с плавной регулировкой скорости, турборежимом, чашей измельчителя и венчиком для взбивания.",
+        "properties": [
+            { "name": "Бренд", "value": "Tuvio (Яндекс Фабрика)" },
+            { "name": "Мощность", "value": "1500 Вт" },
+            { "name": "Комплектация", "value": "3 в 1 (блендер, измельчитель, миксер)" },
+            { "name": "Режимы", "value": "Плавная регулировка + Turbo" }
+        ],
+        "modifications": []
+    },
+    {
+        "id": 13,
+        "sku": "8421-103",
+        "title": "Беспроводной вертикальный пылесос Tuvio 450 Вт с влажной уборкой",
+        "category": "home",
+        "categoryName": "Товары",
+        "price": 12990,
+        "oldPrice": 16990,
+        "discount": 24,
+        "rating": 5.0,
+        "reviewsCount": 89,
+        "image": "images/product-vacuum.webp",
+        "badge": {
+            "bgClass": "bg-red-500",
+            "text": "Хит"
+        },
+        "inStock": true,
+        "fastDelivery": true,
+        "description": "Мощный беспроводной вертикальный пылесос Tuvio 450 Вт с цифровым дисплеем, насадкой для влажной уборки, стойкой для хранения и автономной работой до 60 мин.",
+        "properties": [
+            { "name": "Бренд", "value": "Tuvio (Яндекс Фабрика)" },
+            { "name": "Мощность", "value": "450 Вт" },
+            { "name": "Функция", "value": "Сухая и влажная уборка" },
+            { "name": "Время работы", "value": "до 60 минут" }
+        ],
+        "modifications": []
+    },
+    {
         "id": 1,
         "sku": "7482-019",
         "title": "Умная колонка Яндекс Станция Миди с голосовым помощником Алиса",

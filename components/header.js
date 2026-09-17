@@ -3,17 +3,17 @@ const HEADER_HTML = `
 <!-- Overlay — под шапкой -->
 <div id="nav-overlay" onclick="closeNavDrawer()"
     class="hidden fixed left-0 right-0 bottom-0 z-[98] bg-black/25"
-    style="top:104px;transition:opacity 0.25s;"></div>
+    style="top:60px;transition:opacity 0.25s;"></div>
 
 <!-- Боковой drawer — стартует ниже шапки -->
 <div id="nav-drawer"
     class="fixed left-0 bottom-0 bg-white z-[99] flex flex-col"
-    style="top:104px;width:460px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:2px 0 24px rgba(15,23,42,0.08);border-right:1px solid #f1f5f9;">
+    style="top:60px;width:460px;transform:translateX(-100%);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);box-shadow:16px 0 32px -16px rgba(15,23,42,0.08);border-right:1px solid #f1f5f9;">
 
     <!-- Навигация — выровнена по левому краю иконки ≡ в шапке (24px) -->
     <nav class="flex-1 pt-8 pb-4">
-        <a href="__PREFIX__catalog/index.html" class="header-drawer-link" onclick="closeNavDrawer()">Каталог</a>
-        <a href="__PREFIX__services/index.html" class="header-drawer-link" onclick="closeNavDrawer()">Услуги</a>
+        <a href="__PREFIX__catalog/index.html?type=products" class="header-drawer-link" onclick="closeNavDrawer()">Товары</a>
+        <a href="__PREFIX__catalog/index.html?type=services" class="header-drawer-link" onclick="closeNavDrawer()">Услуги</a>
         <a href="__PREFIX__promos/index.html" class="header-drawer-link" onclick="closeNavDrawer()">Акции</a>
         <a href="__PREFIX__blog/index.html" class="header-drawer-link" onclick="closeNavDrawer()">Блог</a>
         <a href="__PREFIX__about/index.html" class="header-drawer-link" onclick="closeNavDrawer()">О компании</a>
@@ -53,15 +53,16 @@ const HEADER_HTML = `
             </a>
         </div>
 
-        <!-- Правая часть: поиск + иконки с подписями -->
-        <div class="flex items-center gap-3">
+        <!-- Правая часть: поиск -->
+        <div class="flex items-center gap-4">
 
             <!-- Поиск — инпут в шапке, иконка в стилистике -->
             <div id="search-wrap"
-                style="display:flex;align-items:center;background:#f4f5f7;border-radius:8px;padding:0 14px;height:36px;gap:8px;width:280px;transition:background 0.2s,box-shadow 0.2s;">
+                style="display:flex;align-items:center;background:#f4f5f7;border-radius:8px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;transition:background 0.2s,box-shadow 0.2s;">
                 <i data-lucide="search" class="w-5 h-5" style="color:#374151;flex-shrink:0;"></i>
-                <input id="search-input" type="text" placeholder="Найти товары..."
+                <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
                     oninput="_onSearchInput(this)"
+                    onkeydown="_onSearchKeyDown(event, this)"
                     style="flex:1;border:none;outline:none;font-size:13px;color:#1a1a1a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
                 <button id="search-clear-btn" onclick="_clearSearch()"
                     style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#374151;line-height:0;">
@@ -69,47 +70,17 @@ const HEADER_HTML = `
                 </button>
             </div>
 
-            <!-- Избранное -->
-            <button title="Избранное"
-                class="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg hover:bg-surfaceLight transition-all"
-                style="color:#374151;min-width:44px;">
-                <i data-lucide="heart" class="w-5 h-5"></i>
-                <span style="font-size:10px;font-family:'Inter',sans-serif;color:#8c8c8c;line-height:1.2;white-space:nowrap;">Избранное</span>
-            </button>
-
-            <!-- Войти -->
-            <button title="Войти"
-                class="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg hover:bg-surfaceLight transition-all"
-                style="color:#374151;min-width:36px;">
-                <i data-lucide="user" class="w-5 h-5"></i>
-                <span style="font-size:10px;font-family:'Inter',sans-serif;color:#8c8c8c;line-height:1.2;white-space:nowrap;">Войти</span>
-            </button>
-
-            <!-- Корзина -->
-            <button title="Корзина"
-                class="flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg hover:bg-surfaceLight transition-all"
-                style="color:#374151;min-width:44px;">
-                <span class="relative">
-                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-                    <span class="absolute -top-1.5 -right-1.5 w-[15px] h-[15px] bg-accent text-white rounded-full flex items-center justify-center"
-                        style="font-size:8px;font-family:'Inter',sans-serif;font-weight:700;line-height:1;">2</span>
-                </span>
-                <span style="font-size:10px;font-family:'Inter',sans-serif;color:#8c8c8c;line-height:1.2;white-space:nowrap;">Корзина</span>
-            </button>
-
         </div>
     </div>
 </header>
 
-<!-- Строка категорий — скроллится вместе со страницей -->
+<!-- Строка сервисного меню под шапкой -->
 <div class="bg-white border-b border-gray-100 relative z-[90]">
-    <div class="max-w-[1600px] mx-auto px-6 h-[44px] flex items-center gap-1 overflow-x-auto scrollbar-hide">
-        <a href="__PREFIX__catalog/index.html?category=electronics" class="header-cat-link">Электроника</a>
-        <a href="__PREFIX__catalog/index.html?category=home" class="header-cat-link">Для дома</a>
-        <a href="__PREFIX__catalog/index.html?category=sport" class="header-cat-link">Спорт и фитнес</a>
-        <a href="__PREFIX__catalog/index.html?category=clothes" class="header-cat-link">Одежда</a>
-        <a href="__PREFIX__catalog/index.html?category=books" class="header-cat-link">Книги</a>
-        <a href="__PREFIX__catalog/index.html?category=food" class="header-cat-link">Еда и десерты</a>
+    <div class="max-w-[1600px] mx-auto px-6 h-[42px] flex items-center gap-2 sm:gap-4 overflow-x-auto scrollbar-hide">
+        <a href="__PREFIX__promos/index.html" class="header-cat-link">Спецпредложения</a>
+        <a href="__PREFIX__about/index.html#delivery" class="header-cat-link">Доставка и оплата</a>
+        <a href="__PREFIX__about/index.html#how-to-order" class="header-cat-link">Как сделать заказ</a>
+        <a href="__PREFIX__about/index.html#b2b" class="header-cat-link">Корпоративным клиентам</a>
     </div>
 </div>`;
 
@@ -147,6 +118,9 @@ const HEADER_STYLES = `
     white-space: nowrap;
     flex-shrink: 0;
     transition: background 0.15s, color 0.15s;
+}
+.header-cat-link:first-child {
+    margin-left: -10px;
 }
 .header-cat-link:hover {
     background: #f4f5f7;
@@ -220,6 +194,15 @@ window.closeSearch = function () {
 window._onSearchInput = function (inp) {
     const btn = document.getElementById('search-clear-btn');
     if (btn) btn.style.display = inp.value.length > 0 ? 'flex' : 'none';
+};
+window._onSearchKeyDown = function (event, inp) {
+    if (event.key === 'Enter') {
+        const val = inp.value.trim();
+        if (val) {
+            const prefix = typeof PATH_PREFIX !== 'undefined' ? PATH_PREFIX : './';
+            window.location.href = `${prefix}catalog/index.html?search=${encodeURIComponent(val)}`;
+        }
+    }
 };
 window._clearSearch = function () {
     const inp = document.getElementById('search-input');

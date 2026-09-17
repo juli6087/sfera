@@ -18,9 +18,7 @@
     <!-- Подключение Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Подключение общих скриптов конфигурации Tailwind и стилей -->
-    
-    <!-- Компоненты -->
+    <!-- Компоненты и скрипты -->
     <script src="../components/header.js"></script>
     <script src="../components/footer.js"></script>
     <script src="../js/script.js"></script>
@@ -29,17 +27,20 @@
     <script>const PATH_PREFIX = "../";</script>
 </head>
 
-<body class="min-h-screen flex flex-col font-sans bg-[#fafafa]">
+<body class="min-h-screen flex flex-col font-sans bg-[#f9f9f9]">
     <!-- Шапка сайта -->
     <div id="header-placeholder"></div>
 
-    <!-- Основной контент -->
+    <!-- Основной контент страницы категорий -->
     <main class="flex-grow max-w-[1600px] mx-auto w-full px-4 sm:px-6 py-8">
 
-        <!-- Хлебные крошки (Цепочка навигации 1С-Битрикс: bitrix:breadcrumb) -->
-        <nav aria-label="Хлебные крошки" itemscope itemtype="https://schema.org/BreadcrumbList" class="flex items-center gap-2 text-[13px] font-medium text-gray-400 mb-6 flex-wrap">
-            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center gap-2">
-                <a itemprop="item" href="../index.html" class="hover:text-textMain transition-colors flex items-center gap-1">
+        <!-- Хлебные крошки (bitrix:breadcrumb) -->
+        <nav aria-label="Хлебные крошки" itemscope itemtype="https://schema.org/BreadcrumbList"
+            class="flex items-center gap-2 text-[13px] font-medium text-gray-400 mb-6 flex-wrap">
+            <span itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"
+                class="flex items-center gap-2">
+                <a itemprop="item" href="../index.html"
+                    class="hover:text-textMain transition-colors flex items-center gap-1">
                     <span itemprop="name">Главная</span>
                 </a>
                 <meta itemprop="position" content="1" />
@@ -51,177 +52,40 @@
             </span>
         </nav>
 
-        <!-- Заголовок страницы в стилистике референса -->
-        <div class="mb-10">
+        <!-- Заголовок страницы -->
+        <div class="mb-8 sm:mb-10">
             <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">Каталог</h1>
         </div>
 
-        <!-- Сетка категорий (в точности как на референсе: 5 колонок, скругленные серые плитки 1:1, текст снизу слева) -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+        <!-- Сетка категорий: только 2 категории (Товары и Услуги) в единой стилистике сайта -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-4xl">
 
-            <!-- Категория 1: Электроника -->
-            <a href="../catalog/index.html?category=electronics" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-speaker.jpg" alt="Электроника"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+            <!-- Категория 1: Товары -->
+            <a href="../catalog/index.html?type=products" class="group flex flex-col">
+                <div class="w-full aspect-[4/3] rounded-[28px] overflow-hidden transition-all duration-300 relative bg-white group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.07)]">
+                    <img src="../images/category-products.jpg" alt="Товары"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Электроника
-                </span>
+                <div class="flex items-center justify-between mt-4 px-1">
+                    <span class="text-xl sm:text-2xl font-bold text-gray-900">
+                        Товары
+                    </span>
+                    <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 group-hover:text-accent group-hover:translate-x-1.5 transition-all duration-300"></i>
+                </div>
             </a>
 
-            <!-- Категория 2: VR и гаджеты -->
-            <a href="../catalog/index.html?category=electronics" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-vr.jpg" alt="VR и гаджеты"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+            <!-- Категория 2: Услуги -->
+            <a href="../catalog/index.html?type=services" class="group flex flex-col">
+                <div class="w-full aspect-[4/3] rounded-[28px] overflow-hidden transition-all duration-300 relative bg-white group-hover:shadow-[0_12px_36px_rgba(0,0,0,0.07)]">
+                    <img src="../images/category-services.jpg" alt="Услуги"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    VR и гаджеты
-                </span>
-            </a>
-
-            <!-- Категория 3: Для дома и уюта -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-coffee.jpg" alt="Для дома"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
+                <div class="flex items-center justify-between mt-4 px-1">
+                    <span class="text-xl sm:text-2xl font-bold text-gray-900">
+                        Услуги
+                    </span>
+                    <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 group-hover:text-accent group-hover:translate-x-1.5 transition-all duration-300"></i>
                 </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Для дома
-                </span>
-            </a>
-
-            <!-- Категория 4: Спорт и фитнес -->
-            <a href="../catalog/index.html?category=sport" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-dumbbells.jpg" alt="Спорт и фитнес"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Спорт и фитнес
-                </span>
-            </a>
-
-            <!-- Категория 5: Одежда -->
-            <a href="../catalog/index.html?category=clothes" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-hoodie.jpg" alt="Одежда"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Одежда
-                </span>
-            </a>
-
-            <!-- Категория 6: Книги -->
-            <a href="../catalog/index.html?category=books" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-books.jpg" alt="Книги"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Книги
-                </span>
-            </a>
-
-            <!-- Категория 7: Аудиотехника -->
-            <a href="../catalog/index.html?category=electronics" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-turntable.jpg" alt="Аудиотехника"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Аудиотехника
-                </span>
-            </a>
-
-            <!-- Категория 8: Еда и десерты -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-cheesecake.jpg" alt="Еда и десерты"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Еда и десерты
-                </span>
-            </a>
-
-            <!-- Категория 9: Спортивная одежда -->
-            <a href="../catalog/index.html?category=clothes" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-sporttop.jpg" alt="Спортивная одежда"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Спортивная одежда
-                </span>
-            </a>
-
-            <!-- Категория 10: Свечи и ароматы -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/product-candle.jpg" alt="Свечи и ароматы"
-                        class="w-full h-full object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Свечи и ароматы
-                </span>
-            </a>
-
-            <!-- Категория 11: Ремонт техники -->
-            <a href="../catalog/index.html?category=electronics" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/category-refrigerator-repair.jpg" alt="Ремонт техники"
-                        class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Ремонт техники
-                </span>
-            </a>
-
-            <!-- Категория 12: Клининг -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/category-cleaning-supplies.jpg" alt="Клининг"
-                        class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Клининг
-                </span>
-            </a>
-
-            <!-- Категория 13: Животные -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/category-pets-puppy.jpg" alt="Животные"
-                        class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Животные
-                </span>
-            </a>
-
-            <!-- Категория 14: Мастер на час -->
-            <a href="../catalog/index.html?category=home" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/category-handyman-tools.jpg" alt="Мастер на час"
-                        class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Мастер на час
-                </span>
-            </a>
-
-            <!-- Категория 15: Красота и уход -->
-            <a href="../catalog/index.html?category=clothes" class="group flex flex-col">
-                <div class="w-full aspect-square rounded-[28px] overflow-hidden bg-surfaceLight border border-gray-100 group-hover:shadow-xl group-hover:shadow-gray-200/50 group-hover:-translate-y-1 transition-all duration-300 flex items-center justify-center p-3">
-                    <img src="../images/category-beauty-cosmetics.jpg" alt="Красота и уход"
-                        class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                </div>
-                <span class="text-[15px] font-medium text-gray-900 group-hover:text-accent transition-colors mt-3 text-left leading-snug">
-                    Красота и уход
-                </span>
             </a>
 
         </div>
@@ -231,9 +95,6 @@
     <!-- Подвал сайта -->
     <div id="footer-placeholder"></div>
 
-    <script>
-        lucide.createIcons();
-    </script>
 </body>
 
 </html>
