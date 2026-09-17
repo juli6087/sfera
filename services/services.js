@@ -107,7 +107,7 @@ function renderServicesList() {
     grid.innerHTML = filtered.map(service => {
         return `
         <!-- Карточка услуги: дизайн идентичен карточкам на главной странице -->
-        <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300">
+        <div class="flex flex-col group bg-white rounded-3xl p-3 border border-gray-100 hover:border-gray-200 transition-all duration-300">
             <a href="${PATH_PREFIX}service/index.html?id=${service.id}" class="relative bg-surfaceLight rounded-2xl h-52 flex items-center justify-center mb-4 overflow-hidden block cursor-pointer">
                 ${service.badge ? `
                 <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">

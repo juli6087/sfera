@@ -396,11 +396,13 @@ body {
     transform: none !important;
 }
 
-/* Утилита скрытия скроллбара */
-.scrollbar-none {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+/* Отключение теней при наведении на карточки товаров и услуг */
+#products-grid > div:hover,
+#home-popular-products > div:hover,
+#home-popular-services > div:hover,
+#bought-together-grid > div:hover,
+#ordered-together-grid > div:hover,
+.product-card:hover {
+    box-shadow: none !important;
 }
-.scrollbar-none::-webkit-scrollbar {
-    display: none;
-}
+

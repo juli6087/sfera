@@ -33,7 +33,7 @@
     <script>const PATH_PREFIX = "../";</script>
 </head>
 
-<body class="min-h-screen flex flex-col font-sans bg-[#f9f9f9]">
+<body class="min-h-screen flex flex-col font-sans bg-white">
     <!-- Шапка сайта -->
     <div id="header-placeholder"></div>
 
@@ -318,7 +318,7 @@
                         : null;
 
                     return `
-                    <div class="flex flex-col group bg-white rounded-2xl p-2.5 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                    <div class="flex flex-col group bg-white rounded-2xl p-2.5 transition-all duration-300">
                         <!-- Изображение (3:4 вертикальный формат) -->
                         <a href="${PATH_PREFIX}product/index.html?id=${p.id}" class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-3 block cursor-pointer bg-white">
                             ${p.badge ? `

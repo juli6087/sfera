@@ -221,7 +221,7 @@ function renderCatalog() {
             : null;
 
         return `
-        <div class="flex flex-col group bg-white rounded-2xl p-2.5 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+        <div class="flex flex-col group bg-white rounded-2xl p-2.5 transition-all duration-300">
             <!-- Изображение (WB/Ozon вертикальный формат 3:4) -->
             <a href="${item.detailUrl}" class="relative w-full aspect-[3/4] rounded-2xl overflow-hidden mb-3 block cursor-pointer bg-white">
                 ${item.badge ? `
