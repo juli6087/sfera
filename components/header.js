@@ -56,9 +56,9 @@ const HEADER_HTML = `
         <!-- Правая часть: поиск -->
         <div class="flex items-center gap-4">
 
-            <!-- Поиск — инпут в шапке (белый фон с тонким бордером) -->
+            <!-- Поиск — инпут в шапке (белый фон со статичным тонким бордером) -->
             <div id="search-wrap"
-                style="display:flex;align-items:center;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;transition:border-color 0.2s,box-shadow 0.2s;">
+                style="display:flex;align-items:center;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:0 14px;height:38px;gap:8px;width:300px;max-width:100%;">
                 <i data-lucide="search" class="w-4 h-4" style="color:#64748b;flex-shrink:0;"></i>
                 <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
                     oninput="_onSearchInput(this)"
@@ -144,10 +144,6 @@ const HEADER_STYLES = `
 .header-cat-link:hover {
     background: #f4f5f7;
     color: #1a1a1a;
-}
-#search-wrap:focus-within {
-    border-color: #00a3ff !important;
-    box-shadow: 0 0 0 1px #00a3ff;
 }
 </style>`;
 
