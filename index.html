@@ -36,46 +36,12 @@
 
     <main class="flex-grow flex flex-col gap-20 py-10 pb-24">
 
+        <!-- Главный баннер -->
         <section class="max-w-[1600px] mx-auto w-full px-6">
-            <div
-                class="relative w-full h-[400px] sm:h-[460px] md:h-[500px] rounded-3xl overflow-hidden flex items-center bg-[#f8f9fa]">
-                <img src="./images/hero-cover.jpg" alt="Услуги для дома"
-                    class="absolute inset-0 w-full h-full object-cover object-center">
-
-                <div class="relative z-10 max-w-2xl ml-4 sm:ml-10 md:ml-14 p-6 sm:p-8">
-                    <h1
-                        class="text-3xl sm:text-4xl md:text-5xl font-semibold leading-[1.12] mb-4 text-gray-900 tracking-tight">
-                        <span class="whitespace-nowrap">Универсальный шаблон</span><br>для сферы услуг
-                    </h1>
-                    <p class="text-[14px] sm:text-[15px] md:text-base text-gray-600 mb-6 font-normal max-w-lg leading-relaxed">
-                        Идеально подходит для автосалонов, салонов красоты, аренды недвижимости, стоматологий и любых
-                        компаний, продающих услуги людям.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <button
-                            class="px-6 py-3 bg-accent hover:bg-accent-hover text-white rounded-xl font-semibold text-[14px] transition-all">
-                            Записаться онлайн
-                        </button>
-                    </div>
-                </div>
-
-                <div class="absolute bottom-8 right-8 z-20 flex items-center gap-4">
-                    <div class="flex items-center gap-2 mr-4">
-                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
-                        <div class="w-2 h-2 rounded-full bg-accent cursor-pointer"></div>
-                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
-                        <div class="w-2 h-2 rounded-full bg-white/50 cursor-pointer"></div>
-                    </div>
-                    <button
-                        class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-gray-800 hover:text-accent transition-colors border border-gray-100">
-                        <i data-lucide="chevron-left" class="w-5 h-5"></i>
-                    </button>
-                    <button
-                        class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-gray-800 hover:text-accent transition-colors border border-gray-100">
-                        <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                    </button>
-                </div>
-            </div>
+            <a href="./catalog/index.html?type=products" class="block relative w-full rounded-3xl overflow-hidden bg-surfaceLight group">
+                <img src="./images/hero-banner.jpg" alt="Главный баннер"
+                    class="w-full h-[240px] sm:h-[340px] md:h-[420px] lg:h-[460px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.01]">
+            </a>
         </section>
 
         <!-- Интерактивные мини-баннеры и направления (В общей стилистике, без рамок, теней и подзаголовков) -->
