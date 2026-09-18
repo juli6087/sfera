@@ -36,124 +36,95 @@
 
     <main class="flex-grow flex flex-col gap-20 py-10 pb-24">
 
-        <!-- Главный баннер -->
+        <!-- Главный баннер (Слайдер) -->
         <section class="max-w-[1600px] mx-auto w-full px-6">
-            <a href="./catalog/index.html?type=products" class="block relative w-full rounded-3xl overflow-hidden bg-surfaceLight group">
-                <img src="./images/hero-banner.jpg" alt="Главный баннер"
-                    class="w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[536px] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.01]">
-            </a>
+            <div id="hero-slider" class="relative w-full rounded-3xl overflow-hidden bg-surfaceLight group/slider">
+                <!-- Трек слайдов -->
+                <div id="hero-slider-track" class="flex w-full transition-transform duration-500 ease-out">
+                    <!-- Слайд 1 -->
+                    <div class="w-full flex-shrink-0">
+                        <a href="./catalog/index.html?type=products" class="block w-full">
+                            <img src="./images/hero-banner.jpg" alt="Главный баннер 1"
+                                class="w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[536px] object-cover">
+                        </a>
+                    </div>
+                    <!-- Слайд 2 -->
+                    <div class="w-full flex-shrink-0">
+                        <a href="./catalog/index.html?type=products" class="block w-full">
+                            <img src="./images/hero-banner-4.jpg" alt="Главный баннер 2"
+                                class="w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[536px] object-cover">
+                        </a>
+                    </div>
+                    <!-- Слайд 3 -->
+                    <div class="w-full flex-shrink-0">
+                        <a href="./catalog/index.html?type=services" class="block w-full">
+                            <img src="./images/hero-banner-5.jpg" alt="Главный баннер 3"
+                                class="w-full h-[280px] sm:h-[380px] md:h-[460px] lg:h-[536px] object-cover">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Кнопка «Назад» -->
+                <button id="hero-prev-btn" aria-label="Предыдущий слайд"
+                    class="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/slider:opacity-100 focus:outline-none hover:scale-105 active:scale-95 z-10">
+                    <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </button>
+
+                <!-- Кнопка «Вперед» -->
+                <button id="hero-next-btn" aria-label="Следующий слайд"
+                    class="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/80 hover:bg-white text-gray-800 shadow-lg backdrop-blur-md flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/slider:opacity-100 focus:outline-none hover:scale-105 active:scale-95 z-10">
+                    <i data-lucide="chevron-right" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                </button>
+
+                <!-- Индикаторы (точки) -->
+                <div id="hero-dots" class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10 bg-black/25 backdrop-blur-md px-3.5 py-1.5 rounded-full">
+                    <button class="hero-dot w-6 h-2 rounded-full bg-white transition-all duration-300 focus:outline-none" data-slide="0" aria-label="Слайд 1"></button>
+                    <button class="hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 focus:outline-none" data-slide="1" aria-label="Слайд 2"></button>
+                    <button class="hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 focus:outline-none" data-slide="2" aria-label="Слайд 3"></button>
+                </div>
+            </div>
         </section>
 
-        <!-- Интерактивные мини-баннеры и направления (В общей стилистике, без рамок, теней и подзаголовков) -->
-        <section class="max-w-[1600px] mx-auto w-full px-6 mb-2">
-            <!-- Трек мини-баннеров -->
-            <div id="mini-banners-track"
-                class="flex gap-4 sm:gap-5 overflow-x-auto scroll-smooth scrollbar-none pb-1 pt-1">
-                
-                <!-- Баннер 1: Скидка на первый заказ -->
-                <a href="promos/" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/promo-welcome.jpg" alt="Скидка на первый заказ"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Скидка на первый заказ
-                        </span>
+        <!-- ========================================================================= -->
+        <!-- БЛОК: АКЦИОННЫЕ МИНИ-БАННЕРЫ                                             -->
+        <!-- ========================================================================= -->
+        <section class="max-w-[1600px] mx-auto w-full px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+                <!-- Мини-баннер 1: Скидка 30% на первый заказ -->
+                <a href="./promos/index.html"
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img src="./images/mini-banner-1.jpg" alt="Скидка -30% на первый заказ"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
 
-                <!-- Баннер 2: Ремонт бытовой техники -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-refrigerator-repair.jpg" alt="Ремонт бытовой техники"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Ремонт бытовой техники
-                        </span>
+                <!-- Мини-баннер 2: Проф. техника / Инструменты для дома -->
+                <a href="./catalog/index.html?type=products"
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img src="./images/mini-banner-2.jpg" alt="Проф. техника - инструменты для дома"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
 
-                <!-- Баннер 3: Клининг и уборка -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-cleaning-supplies.jpg" alt="Клининг и уборка"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Клининг и уборка
-                        </span>
+                <!-- Мини-баннер 3: Бренд месяца Gaggia -->
+                <a href="./catalog/index.html?type=products"
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img src="./images/mini-banner-3.jpg" alt="Бренд месяца Gaggia"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
 
-                <!-- Баннер 4: Мастер на час -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-handyman-tools.jpg" alt="Мастер на час"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Мастер на час
-                        </span>
+                <!-- Мини-баннер 4: Любимцам с заботой -->
+                <a href="./catalog/index.html?type=services"
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[4/3] overflow-hidden">
+                        <img src="./images/mini-banner-5.jpg" alt="Любимцам с заботой"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
-
-                <!-- Баннер 5: Журнал и советы -->
-                <a href="blog/" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/article-handyman.jpg" alt="Журнал и советы"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Журнал и советы
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Баннер 6: Автоуслуги и детейлинг -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-auto-detailing.jpg" alt="Автоуслуги и детейлинг"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Автоуслуги и детейлинг
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Баннер 7: Уход за питомцами -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-pets-puppy.jpg" alt="Уход за питомцами"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Уход за питомцами
-                        </span>
-                    </div>
-                </a>
-
-                <!-- Баннер 8: Красота и SPA-уход -->
-                <a href="catalog/index.html?type=services" class="flex-shrink-0 w-[200px] sm:w-[225px] md:w-[240px] group flex flex-col bg-white rounded-2xl p-2.5 transition-all duration-300">
-                    <div class="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-surfaceLight mb-2 flex items-center justify-center">
-                        <img src="./images/category-beauty-cosmetics.jpg" alt="Красота и SPA-уход"
-                            class="w-full h-full object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105">
-                    </div>
-                    <div class="flex flex-col px-1 pb-0.5">
-                        <span class="text-[14px] font-semibold text-gray-900 leading-snug line-clamp-1">
-                            Красота и SPA-уход
-                        </span>
-                    </div>
-                </a>
-
             </div>
         </section>
 
@@ -173,57 +144,25 @@
         </section>
 
         <!-- ========================================================================= -->
-        <!-- БЛОК: КРУПНЫЕ ПРОМО-БАННЕРЫ (РАБОЧИЕ СТОЛЫ И ТВ-ТУМБЫ)                    -->
+        <!-- БЛОК: КРУПНЫЕ ПРОМО-БАННЕРЫ                                              -->
         <!-- ========================================================================= -->
         <section class="max-w-[1600px] mx-auto w-full px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Баннер 1: Рабочие столы -->
+                <!-- Баннер 1: Уют в вашем доме -->
                 <a href="./catalog/index.html?type=products"
-                    class="relative block rounded-[28px] overflow-hidden min-h-[340px] sm:min-h-[380px] lg:min-h-[400px] bg-[#f4ece4] group transition-all duration-300">
-                    <img src="./images/banner-work-desks.jpg" alt="Рабочие столы для вдохновения"
-                        class="absolute inset-0 w-full h-full object-cover object-right sm:object-center transition-transform duration-700 ease-out group-hover:scale-105">
-                    
-                    <!-- Полупрозрачный градиент для читаемости текста на любых экранах -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#f7f2eb]/90 via-[#f7f2eb]/60 to-transparent sm:w-2/3"></div>
-
-                    <!-- Текстовый блок -->
-                    <div class="relative z-10 h-full p-8 sm:p-10 lg:p-12 flex flex-col justify-center items-start max-w-[340px] sm:max-w-[380px]">
-                        <h3 class="text-2xl sm:text-3xl lg:text-[34px] font-medium tracking-wide text-[#3e2229] uppercase leading-[1.18] mb-3">
-                            Рабочие столы<br>для вдохновения
-                        </h3>
-                        <p class="text-[14px] sm:text-[15px] text-[#5a333c] mb-7 font-normal leading-relaxed">
-                            эргономичные и стильные решения для вашего успеха
-                        </p>
-                        <span
-                            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#3e2027] text-white text-sm font-medium transition-all group-hover:bg-[#251217] group-hover:gap-3 shadow-xs">
-                            <span>Выбрать стол</span>
-                            <span class="text-base leading-none">→</span>
-                        </span>
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[16/9] overflow-hidden">
+                        <img src="./images/banner-cozy-home.jpg" alt="Уют в вашем доме — скидка 15%"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
 
-                <!-- Баннер 2: ТВ-тумбы -->
+                <!-- Баннер 2: Для ваших любимцев -->
                 <a href="./catalog/index.html?type=products"
-                    class="relative block rounded-[28px] overflow-hidden min-h-[340px] sm:min-h-[380px] lg:min-h-[400px] bg-[#f0eee9] group transition-all duration-300">
-                    <img src="./images/banner-tv-stands.jpg" alt="ТВ-тумбы для вашей гостинной"
-                        class="absolute inset-0 w-full h-full object-cover object-right sm:object-center transition-transform duration-700 ease-out group-hover:scale-105">
-                    
-                    <!-- Полупрозрачный градиент для читаемости текста на любых экранах -->
-                    <div class="absolute inset-0 bg-gradient-to-r from-[#f3f2ee]/90 via-[#f3f2ee]/60 to-transparent sm:w-2/3"></div>
-
-                    <!-- Текстовый блок -->
-                    <div class="relative z-10 h-full p-8 sm:p-10 lg:p-12 flex flex-col justify-center items-start max-w-[340px] sm:max-w-[380px]">
-                        <h3 class="text-2xl sm:text-3xl lg:text-[34px] font-medium tracking-wide text-[#143a35] uppercase leading-[1.18] mb-3">
-                            ТВ-тумбы для<br>вашей гостинной
-                        </h3>
-                        <p class="text-[14px] sm:text-[15px] text-[#24524a] mb-7 font-normal leading-relaxed">
-                            порядок и стиль в каждом миллиметре
-                        </p>
-                        <span
-                            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1b433c] text-white text-sm font-medium transition-all group-hover:bg-[#102d28] group-hover:gap-3 shadow-xs">
-                            <span>Выбрать тумбу</span>
-                            <span class="text-base leading-none">→</span>
-                        </span>
+                    class="relative block rounded-2xl sm:rounded-3xl overflow-hidden bg-surfaceLight shadow-sm">
+                    <div class="relative w-full aspect-[16/9] overflow-hidden">
+                        <img src="./images/banner-pets.jpg" alt="Для ваших любимцев — товары для животных"
+                            class="w-full h-full object-cover">
                     </div>
                 </a>
             </div>
@@ -499,18 +438,83 @@
                 }).join('');
             }
 
-            // Инициализация карусели мини-баннеров
-            const bannerTrack = document.getElementById('mini-banners-track');
-            const btnPrevBanner = document.getElementById('mini-banners-prev');
-            const btnNextBanner = document.getElementById('mini-banners-next');
-            if (bannerTrack && btnPrevBanner && btnNextBanner) {
-                const scrollStep = 260;
-                btnPrevBanner.addEventListener('click', () => {
-                    bannerTrack.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+            // Инициализация главного слайдера баннеров
+            const heroSlider = document.getElementById('hero-slider');
+            const heroTrack = document.getElementById('hero-slider-track');
+            const heroPrevBtn = document.getElementById('hero-prev-btn');
+            const heroNextBtn = document.getElementById('hero-next-btn');
+            const heroDots = document.querySelectorAll('.hero-dot');
+            
+            if (heroSlider && heroTrack) {
+                let currentSlide = 0;
+                const totalSlides = heroDots.length || 3;
+                let autoSlideInterval = null;
+
+                function updateSlider(index) {
+                    currentSlide = (index + totalSlides) % totalSlides;
+                    heroTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    heroDots.forEach((dot, idx) => {
+                        if (idx === currentSlide) {
+                            dot.className = 'hero-dot w-6 h-2 rounded-full bg-white transition-all duration-300 focus:outline-none';
+                        } else {
+                            dot.className = 'hero-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 focus:outline-none';
+                        }
+                    });
+                }
+
+                function nextSlide() {
+                    updateSlider(currentSlide + 1);
+                }
+
+                function prevSlide() {
+                    updateSlider(currentSlide - 1);
+                }
+
+                function startAutoSlide() {
+                    stopAutoSlide();
+                    autoSlideInterval = setInterval(nextSlide, 5000);
+                }
+
+                function stopAutoSlide() {
+                    if (autoSlideInterval) {
+                        clearInterval(autoSlideInterval);
+                        autoSlideInterval = null;
+                    }
+                }
+
+                if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { prevSlide(); startAutoSlide(); });
+                if (heroNextBtn) heroNextBtn.addEventListener('click', () => { nextSlide(); startAutoSlide(); });
+
+                heroDots.forEach((dot) => {
+                    dot.addEventListener('click', (e) => {
+                        const targetSlide = parseInt(e.currentTarget.getAttribute('data-slide'), 10);
+                        updateSlider(targetSlide);
+                        startAutoSlide();
+                    });
                 });
-                btnNextBanner.addEventListener('click', () => {
-                    bannerTrack.scrollBy({ left: scrollStep, behavior: 'smooth' });
-                });
+
+                heroSlider.addEventListener('mouseenter', stopAutoSlide);
+                heroSlider.addEventListener('mouseleave', startAutoSlide);
+
+                // Поддержка свайпов на тач-устройствах
+                let touchStartX = 0;
+                let touchEndX = 0;
+                heroSlider.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoSlide();
+                }, { passive: true });
+
+                heroSlider.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchStartX - touchEndX > 50) {
+                        nextSlide();
+                    } else if (touchEndX - touchStartX > 50) {
+                        prevSlide();
+                    }
+                    startAutoSlide();
+                }, { passive: true });
+
+                startAutoSlide();
             }
 
             if (window.lucide) {
