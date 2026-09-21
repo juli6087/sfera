@@ -63,7 +63,7 @@ const HEADER_HTML = `
                 <input id="search-input" type="text" placeholder="Поиск товаров и услуг..."
                     oninput="_onSearchInput(this)"
                     onkeydown="_onSearchKeyDown(event, this)"
-                    style="flex:1;border:none;outline:none;font-size:13px;color:#0f172a;background:transparent;font-family:'Inter',sans-serif;letter-spacing:-0.1px;min-width:0;">
+                    style="flex:1;border:none;outline:none;font-size:13px;color:#0f172a;background:transparent;font-family:inherit;letter-spacing:-0.1px;min-width:0;">
                 <button id="search-clear-btn" onclick="_clearSearch()"
                     style="display:none;background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;color:#64748b;line-height:0;">
                     <i data-lucide="x" class="w-4 h-4"></i>
@@ -105,7 +105,7 @@ const HEADER_STYLES = `
     color: #1a1a1a;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Inter', sans-serif;
+    font-family: inherit;
     letter-spacing: -0.1px;
     transition: color 0.15s;
 }
@@ -133,7 +133,7 @@ const HEADER_STYLES = `
     color: #374151;
     font-size: 14px;
     font-weight: 400;
-    font-family: 'Inter', sans-serif;
+    font-family: inherit;
     white-space: nowrap;
     flex-shrink: 0;
     transition: background 0.15s, color 0.15s;

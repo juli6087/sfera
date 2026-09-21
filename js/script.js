@@ -6,6 +6,7 @@ tailwind.config = {
                 sans: ['Inter', 'sans-serif'],
                 roboto: ['Roboto', 'sans-serif'],
                 montserrat: ['Montserrat', 'sans-serif'],
+                golos: ['Golos Text', 'sans-serif'],
             },
             colors: {
                 base: '#ffffff',          // Белый фон сайта
@@ -317,6 +318,9 @@ window.createFontConstructorDOM = function() {
                     <button onclick="changeSiteFont('font-montserrat')" class="px-3 py-2 text-left rounded-lg hover:bg-gray-50 text-sm flex items-center justify-between font-montserrat transition-colors border border-transparent">
                         Montserrat <i data-lucide="check" class="w-4 h-4 text-accent hidden check-icon-font" data-font="font-montserrat"></i>
                     </button>
+                    <button onclick="changeSiteFont('font-golos')" class="px-3 py-2 text-left rounded-lg hover:bg-gray-50 text-sm flex items-center justify-between font-golos transition-colors border border-transparent">
+                        Golos <i data-lucide="check" class="w-4 h-4 text-accent hidden check-icon-font" data-font="font-golos"></i>
+                    </button>
                 </div>
             </div>
 
@@ -404,7 +408,7 @@ window.resetFontSettings = function() {
 };
 
 window.applySiteFont = function(fontClass) {
-    document.body.classList.remove('font-sans', 'font-roboto', 'font-montserrat');
+    document.body.classList.remove('font-sans', 'font-roboto', 'font-montserrat', 'font-golos');
     document.body.classList.add(fontClass);
 };
 
@@ -425,7 +429,7 @@ window.applyDynamicStyles = function() {
     }
     if (textWeight) {
         // Изменяем жирность параграфов и спанов, но не кнопок (чтобы не сломать их жирность)
-        css += `p, span:not(.animate-spin), a:not(.btn):not(.header-cat-link):not(.header-drawer-link), li, div.text-gray-500, div.text-textMuted { font-weight: ${textWeight} !important; }\n`;
+        css += `p, span:not(.animate-spin), a:not(.btn), li, div.text-gray-500, div.text-textMuted { font-weight: ${textWeight} !important; }\n`;
     }
     
     styleTag.innerHTML = css;
