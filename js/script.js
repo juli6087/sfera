@@ -4,6 +4,8 @@ tailwind.config = {
         extend: {
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],
+                roboto: ['Roboto', 'sans-serif'],
+                montserrat: ['Montserrat', 'sans-serif'],
             },
             colors: {
                 base: '#ffffff',          // Белый фон сайта
