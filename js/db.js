@@ -12,7 +12,7 @@ const PRODUCTS_DATA = [
         "discount": 19,
         "rating": 4.9,
         "reviewsCount": 128,
-        "image": "images/product-new-14.jpg",
+        "image": "images/product-new-20.jpg",
         "badge": {
             "bgClass": "bg-red-500",
             "text": "Новинка"
@@ -34,7 +34,7 @@ const PRODUCTS_DATA = [
         "discount": 25,
         "rating": 4.9,
         "reviewsCount": 48,
-        "image": "images/product-new-15.jpg",
+        "image": "images/product-new-21.jpg",
         "badge": {
             "bgClass": "bg-orange-500",
             "text": "Хит"
@@ -56,7 +56,7 @@ const PRODUCTS_DATA = [
         "discount": 15,
         "rating": 4.9,
         "reviewsCount": 64,
-        "image": "images/product-new-6.jpg",
+        "image": "images/product-new-22.jpg",
         "badge": {
             "bgClass": "bg-orange-500",
             "text": "Хит"
@@ -102,7 +102,7 @@ const PRODUCTS_DATA = [
         "discount": 14,
         "rating": 4.7,
         "reviewsCount": 42,
-        "image": "images/product-new-7.jpg",
+        "image": "images/product-new-23.jpg",
         "badge": {
             "bgClass": "bg-red-500",
             "text": "Новинка"
@@ -164,7 +164,7 @@ const PRODUCTS_DATA = [
         "discount": 16,
         "rating": 5,
         "reviewsCount": 31,
-        "image": "images/product-new-8.jpg",
+        "image": "images/product-new-24.jpg",
         "badge": {
             "bgClass": "bg-purple-500",
             "text": "Советуем"
@@ -199,7 +199,7 @@ const PRODUCTS_DATA = [
         "discount": 14,
         "rating": 4.9,
         "reviewsCount": 88,
-        "image": "images/product-new-9.jpg",
+        "image": "images/product-new-25.jpg",
         "badge": {
             "bgClass": "bg-red-500",
             "text": "Новинка"
@@ -244,7 +244,7 @@ const PRODUCTS_DATA = [
         "discount": 12,
         "rating": 4.8,
         "reviewsCount": 53,
-        "image": "images/product-new-10.jpg",
+        "image": "images/product-new-26.jpg",
         "badge": {
             "bgClass": "bg-purple-500",
             "text": "Советуем"
@@ -279,7 +279,7 @@ const PRODUCTS_DATA = [
         "discount": 15,
         "rating": 4.9,
         "reviewsCount": 112,
-        "image": "images/product-new-11.jpg",
+        "image": "images/product-new-27.jpg",
         "badge": {
             "bgClass": "bg-orange-500",
             "text": "Хит"
@@ -324,7 +324,7 @@ const PRODUCTS_DATA = [
         "discount": 16,
         "rating": 4.8,
         "reviewsCount": 39,
-        "image": "images/product-new-12.jpg",
+        "image": "images/product-new-28.jpg",
         "badge": {
             "bgClass": "bg-red-500",
             "text": "-16%"
@@ -364,7 +364,7 @@ const PRODUCTS_DATA = [
                 "options": [
                     {
                         "name": "Черный",
-                        "image": "images/product-new-12.jpg"
+                        "image": "images/product-new-28.jpg"
                     },
                     {
                         "name": "Розовый",
@@ -389,7 +389,7 @@ const PRODUCTS_DATA = [
         "discount": 18,
         "rating": 4.9,
         "reviewsCount": 76,
-        "image": "images/product-new-13.jpg",
+        "image": "images/product-new-29.jpg",
         "badge": {
             "bgClass": "bg-amber-400 text-gray-900",
             "text": "Акция"
