@@ -47,7 +47,7 @@ const HEADER_HTML = `
                     <path d="M6 18 L 18 23 L 30 18" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
                     <path d="M6 25 L 18 30 L 30 25" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.25"/>
                 </svg>
-                <span class="text-[20px] font-semibold tracking-tight text-textMain leading-none">
+                <span class="text-[26px] font-semibold tracking-tight text-textMain leading-none">
                     Сфера<span class="text-accent">.</span>
                 </span>
             </a>
@@ -131,7 +131,7 @@ const HEADER_STYLES = `
     border-radius: 6px;
     text-decoration: none;
     color: #374151;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     font-family: 'Inter', sans-serif;
     white-space: nowrap;

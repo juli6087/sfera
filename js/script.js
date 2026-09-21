@@ -36,11 +36,29 @@ tailwind.config = {
 document.addEventListener('DOMContentLoaded', () => {
     // Внедрение универсального модального окна в DOM
     createOrderModalDOM();
+    
+    // Внедрение конструктора шрифтов
+    createFontConstructorDOM();
+
+    // Инициализация шрифта из localStorage
+    initSiteFont();
 
     // Инициализация иконок Lucide
     if (window.lucide) {
         lucide.createIcons();
+        updateFontCheckmarks(); // Обновляем галочки после загрузки иконок
     }
+
+    // Закрытие дропдауна со шрифтами при клике вне его
+    document.addEventListener('click', (e) => {
+        const dropdown = document.getElementById('font-dropdown');
+        const wrap = e.target.closest('.font-constructor-wrap');
+        if (dropdown && !dropdown.classList.contains('hidden') && !wrap) {
+            dropdown.classList.add('hidden');
+            dropdown.classList.remove('opacity-100', 'scale-100');
+            dropdown.classList.add('opacity-0', 'scale-95');
+        }
+    });
 
     // Привязка кнопок вызова заявки в шапке
     document.querySelectorAll('[data-open-lead-modal]').forEach(btn => {
@@ -268,4 +286,194 @@ window.handleOrderSubmit = function(event) {
             lucide.createIcons();
         }
     }, 600);
+};
+
+// =============================================================================
+// КОНСТРУКТОР ШРИФТОВ
+// =============================================================================
+
+window.createFontConstructorDOM = function() {
+    if (document.getElementById('font-constructor-widget')) return;
+
+    const constructorHTML = `
+    <div id="font-constructor-widget" class="fixed bottom-4 left-4 z-[999] font-constructor-wrap">
+        <button onclick="toggleFontDropdown()" title="Конструктор дизайна"
+            class="w-12 h-12 bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-center justify-center border border-gray-100 hover:scale-105 transition-transform active:scale-95">
+            <i data-lucide="palette" class="w-5 h-5 text-gray-700"></i>
+        </button>
+        
+        <div id="font-dropdown" class="absolute bottom-full left-0 mb-4 w-72 bg-white border border-gray-100 shadow-2xl rounded-2xl hidden flex-col overflow-hidden z-[1000] origin-bottom-left transform transition-all opacity-0 scale-95 p-5 gap-6">
+            
+            <!-- Шрифт -->
+            <div>
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-3 block">Шрифт сайта</span>
+                <div class="flex flex-col gap-1.5">
+                    <button onclick="changeSiteFont('font-sans')" class="px-3 py-2 text-left rounded-lg hover:bg-gray-50 text-sm flex items-center justify-between font-sans transition-colors border border-transparent">
+                        Inter <i data-lucide="check" class="w-4 h-4 text-accent hidden check-icon-font" data-font="font-sans"></i>
+                    </button>
+                    <button onclick="changeSiteFont('font-roboto')" class="px-3 py-2 text-left rounded-lg hover:bg-gray-50 text-sm flex items-center justify-between font-roboto transition-colors border border-transparent">
+                        Roboto <i data-lucide="check" class="w-4 h-4 text-accent hidden check-icon-font" data-font="font-roboto"></i>
+                    </button>
+                    <button onclick="changeSiteFont('font-montserrat')" class="px-3 py-2 text-left rounded-lg hover:bg-gray-50 text-sm flex items-center justify-between font-montserrat transition-colors border border-transparent">
+                        Montserrat <i data-lucide="check" class="w-4 h-4 text-accent hidden check-icon-font" data-font="font-montserrat"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Жирность заголовков -->
+            <div>
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-3 block">Жирность заголовков</span>
+                <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-xl">
+                    <button onclick="changeHeadingWeight('400')" class="flex-1 py-1.5 text-xs rounded-lg font-normal text-gray-600 hover:text-gray-900 transition-all hw-btn" data-hw="400">400</button>
+                    <button onclick="changeHeadingWeight('500')" class="flex-1 py-1.5 text-xs rounded-lg font-medium text-gray-600 hover:text-gray-900 transition-all hw-btn" data-hw="500">500</button>
+                    <button onclick="changeHeadingWeight('600')" class="flex-1 py-1.5 text-xs rounded-lg font-semibold text-gray-600 hover:text-gray-900 transition-all hw-btn" data-hw="600">600</button>
+                    <button onclick="changeHeadingWeight('700')" class="flex-1 py-1.5 text-xs rounded-lg font-bold text-gray-600 hover:text-gray-900 transition-all hw-btn" data-hw="700">700</button>
+                    <button onclick="changeHeadingWeight('800')" class="flex-1 py-1.5 text-xs rounded-lg font-extrabold text-gray-600 hover:text-gray-900 transition-all hw-btn" data-hw="800">800</button>
+                </div>
+            </div>
+
+            <!-- Жирность текста -->
+            <div>
+                <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-3 block">Жирность текста</span>
+                <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-xl">
+                    <button onclick="changeTextWeight('300')" class="flex-1 py-1.5 text-xs rounded-lg font-light text-gray-600 hover:text-gray-900 transition-all tw-btn" data-tw="300">300</button>
+                    <button onclick="changeTextWeight('400')" class="flex-1 py-1.5 text-xs rounded-lg font-normal text-gray-600 hover:text-gray-900 transition-all tw-btn" data-tw="400">400</button>
+                    <button onclick="changeTextWeight('500')" class="flex-1 py-1.5 text-xs rounded-lg font-medium text-gray-600 hover:text-gray-900 transition-all tw-btn" data-tw="500">500</button>
+                </div>
+            </div>
+
+            <!-- Сброс по умолчанию -->
+            <div class="pt-2 border-t border-gray-100">
+                <button onclick="resetFontSettings()" class="w-full py-2.5 text-xs font-semibold text-gray-500 hover:text-gray-900 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                    По умолчанию
+                </button>
+            </div>
+
+        </div>
+    </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', constructorHTML);
+};
+
+window.toggleFontDropdown = function() {
+    const dropdown = document.getElementById('font-dropdown');
+    if (!dropdown) return;
+
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        setTimeout(() => {
+            dropdown.classList.remove('opacity-0', 'scale-95');
+            dropdown.classList.add('opacity-100', 'scale-100');
+        }, 10);
+    } else {
+        dropdown.classList.remove('opacity-100', 'scale-100');
+        dropdown.classList.add('opacity-0', 'scale-95');
+        setTimeout(() => {
+            dropdown.classList.add('hidden');
+        }, 150);
+    }
+};
+
+window.changeSiteFont = function(fontClass) {
+    localStorage.setItem('site_font', fontClass);
+    applySiteFont(fontClass);
+    updateFontCheckmarks();
+};
+
+window.changeHeadingWeight = function(weight) {
+    localStorage.setItem('heading_weight', weight);
+    applyDynamicStyles();
+    updateFontCheckmarks();
+};
+
+window.changeTextWeight = function(weight) {
+    localStorage.setItem('text_weight', weight);
+    applyDynamicStyles();
+    updateFontCheckmarks();
+};
+
+window.resetFontSettings = function() {
+    localStorage.removeItem('site_font');
+    localStorage.removeItem('heading_weight');
+    localStorage.removeItem('text_weight');
+    
+    applySiteFont('font-sans');
+    applyDynamicStyles();
+    updateFontCheckmarks();
+};
+
+window.applySiteFont = function(fontClass) {
+    document.body.classList.remove('font-sans', 'font-roboto', 'font-montserrat');
+    document.body.classList.add(fontClass);
+};
+
+window.applyDynamicStyles = function() {
+    const headingWeight = localStorage.getItem('heading_weight');
+    const textWeight = localStorage.getItem('text_weight');
+    
+    let styleTag = document.getElementById('constructor-dynamic-styles');
+    if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'constructor-dynamic-styles';
+        document.head.appendChild(styleTag);
+    }
+    
+    let css = '';
+    if (headingWeight) {
+        css += `h1, h2, h3, h4, h5, h6, .text-xl, .text-2xl, .text-3xl { font-weight: ${headingWeight} !important; }\n`;
+    }
+    if (textWeight) {
+        // Изменяем жирность параграфов и спанов, но не кнопок (чтобы не сломать их жирность)
+        css += `p, span:not(.animate-spin), a:not(.btn):not(.header-cat-link):not(.header-drawer-link), li, div.text-gray-500, div.text-textMuted { font-weight: ${textWeight} !important; }\n`;
+    }
+    
+    styleTag.innerHTML = css;
+};
+
+window.initSiteFont = function() {
+    const savedFont = localStorage.getItem('site_font') || 'font-sans';
+    applySiteFont(savedFont);
+    applyDynamicStyles();
+};
+
+window.updateFontCheckmarks = function() {
+    const savedFont = localStorage.getItem('site_font') || 'font-sans';
+    const headingWeight = localStorage.getItem('heading_weight') || '700'; // дефолт для заголовков обычно 700 или 600
+    const textWeight = localStorage.getItem('text_weight') || '400';
+
+    // Обновление шрифта
+    document.querySelectorAll('.check-icon-font').forEach(icon => {
+        if (icon.getAttribute('data-font') === savedFont) {
+            icon.classList.remove('hidden');
+            icon.parentElement.classList.add('bg-gray-50', 'border-gray-200');
+            icon.parentElement.classList.remove('border-transparent');
+        } else {
+            icon.classList.add('hidden');
+            icon.parentElement.classList.remove('bg-gray-50', 'border-gray-200');
+            icon.parentElement.classList.add('border-transparent');
+        }
+    });
+
+    // Обновление кнопок заголовков
+    document.querySelectorAll('.hw-btn').forEach(btn => {
+        if (btn.getAttribute('data-hw') === headingWeight) {
+            btn.classList.add('bg-white', 'shadow-sm', 'text-gray-900');
+            btn.classList.remove('text-gray-600');
+        } else {
+            btn.classList.remove('bg-white', 'shadow-sm', 'text-gray-900');
+            btn.classList.add('text-gray-600');
+        }
+    });
+
+    // Обновление кнопок текста
+    document.querySelectorAll('.tw-btn').forEach(btn => {
+        if (btn.getAttribute('data-tw') === textWeight) {
+            btn.classList.add('bg-white', 'shadow-sm', 'text-gray-900');
+            btn.classList.remove('text-gray-600');
+        } else {
+            btn.classList.remove('bg-white', 'shadow-sm', 'text-gray-900');
+            btn.classList.add('text-gray-600');
+        }
+    });
 };
